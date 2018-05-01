@@ -1,0 +1,17 @@
+{
+    "name": "Puppeteer v1.3.0",
+    "package": "puppeteer",
+    "index": "puppeteer.html",
+    "selectors": {
+        "h1": "Package",
+        "h3[id^='class']": "Class",
+        "h4[id^='event-']": "Event",
+        "h4:not([id^='event-'])": "Method"
+    },
+    "ignore": [
+        "ABOUT"
+    ],
+    "icon32x32": "",
+    "allowJS": false,
+    "ExternalURL": ""
+}

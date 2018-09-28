@@ -1,14 +1,34 @@
-<h5 id="released-apis-v1-2-0-https-github-com-googlechrome-puppeteer-blob-v1-2-0-docs-api-md-v1-1-1-https-github-com-googlechrome-puppeteer-blob-v1-1-1-docs-api-md-v1-1-0-https-github-com-googlechrome-puppeteer-blob-v1-1-0-docs-api-md-v1-0-0-https-github-com-googlechrome-puppeteer-blob-v1-0-0-docs-api-md-v0-13-0-https-github-com-googlechrome-puppeteer-blob-v0-13-0-docs-api-md-v0-12-0-https-github-com-googlechrome-puppeteer-blob-v0-12-0-docs-api-md-v0-11-0-https-github-com-googlechrome-puppeteer-blob-v0-11-0-docs-api-md-v0-10-2-https-github-com-googlechrome-puppeteer-blob-v0-10-2-docs-api-md-v0-10-1-https-github-com-googlechrome-puppeteer-blob-v0-10-1-docs-api-md-v0-10-0-https-github-com-googlechrome-puppeteer-blob-v0-10-0-docs-api-md-v0-9-0-https-github-com-googlechrome-puppeteer-blob-v0-9-0-docs-api-md-">Released APIs: <a href="https://github.com/GoogleChrome/puppeteer/blob/v1.2.0/docs/api.md">v1.2.0</a> | <a href="https://github.com/GoogleChrome/puppeteer/blob/v1.1.1/docs/api.md">v1.1.1</a> | <a href="https://github.com/GoogleChrome/puppeteer/blob/v1.1.0/docs/api.md">v1.1.0</a> | <a href="https://github.com/GoogleChrome/puppeteer/blob/v1.0.0/docs/api.md">v1.0.0</a> | <a href="https://github.com/GoogleChrome/puppeteer/blob/v0.13.0/docs/api.md">v0.13.0</a> | <a href="https://github.com/GoogleChrome/puppeteer/blob/v0.12.0/docs/api.md">v0.12.0</a> | <a href="https://github.com/GoogleChrome/puppeteer/blob/v0.11.0/docs/api.md">v0.11.0</a> | <a href="https://github.com/GoogleChrome/puppeteer/blob/v0.10.2/docs/api.md">v0.10.2</a> | <a href="https://github.com/GoogleChrome/puppeteer/blob/v0.10.1/docs/api.md">v0.10.1</a> | <a href="https://github.com/GoogleChrome/puppeteer/blob/v0.10.0/docs/api.md">v0.10.0</a> | <a href="https://github.com/GoogleChrome/puppeteer/blob/v0.9.0/docs/api.md">v0.9.0</a></h5>
-<h1 id="puppeteer-api-v-gen-version-1-3-0-gen-stop-">Puppeteer API v<!-- GEN:version -->1.3.0<!-- GEN:stop--></h1>
+<h1 id="puppeteer-api-gen-version-tip-of-tree-gen-stop-">Puppeteer API <!-- GEN:version -->Tip-Of-Tree<!-- GEN:stop--></h1>
+<!-- GEN:empty-if-release -->
+<blockquote>
+<p>Next Release: <strong>Oct 4, 2018</strong>
+<!-- GEN:stop --></p>
+<ul>
+<li>API Translations: <a href="https://zhaoqize.github.io/puppeteer-api-zh_CN/#/">中文|Chinese</a></li>
+<li>Releases per Chromium Version:<ul>
+<li>Chromium 71.0.3542.0 - <a href="https://github.com/GoogleChrome/puppeteer/blob/v1.8.0/docs/api.md">Puppeteer v1.8.0</a></li>
+<li>Chromium 70.0.3508.0 - <a href="https://github.com/GoogleChrome/puppeteer/blob/v1.7.0/docs/api.md">Puppeteer v1.7.0</a></li>
+<li>Chromium 69.0.3494.0 - <a href="https://github.com/GoogleChrome/puppeteer/blob/v1.6.2/docs/api.md">Puppeteer v1.6.2</a></li>
+<li>Chromium 68.0.3419.0 - <a href="https://github.com/GoogleChrome/puppeteer/blob/v1.4.0/docs/api.md">Puppeteer v1.4.0</a></li>
+<li>Chromium 67.0.3392.0 - <a href="https://github.com/GoogleChrome/puppeteer/blob/v1.3.0/docs/api.md">Puppeteer v1.3.0</a></li>
+<li>Chromium 66.0.3347.0 - <a href="https://github.com/GoogleChrome/puppeteer/blob/v1.1.1/docs/api.md">Puppeteer v1.1.1</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/releases">All releases</a></li>
+</ul>
+</li>
+</ul>
+</blockquote>
 <h5 id="table-of-contents">Table of Contents</h5>
-<!-- toc -->
+<!-- GEN:toc -->
 <ul>
 <li><a href="#overview">Overview</a></li>
+<li><a href="#puppeteer-vs-puppeteer-core">puppeteer vs puppeteer-core</a></li>
 <li><a href="#environment-variables">Environment Variables</a></li>
+<li><a href="#error-handling">Error handling</a></li>
+<li><a href="#working-with-chrome-extensions">Working with Chrome Extensions</a></li>
 <li><a href="#class-puppeteer">class: Puppeteer</a><ul>
 <li><a href="#puppeteerconnectoptions">puppeteer.connect(options)</a></li>
 <li><a href="#puppeteercreatebrowserfetcheroptions">puppeteer.createBrowserFetcher([options])</a></li>
-<li><a href="#puppeteerdefaultargs">puppeteer.defaultArgs()</a></li>
+<li><a href="#puppeteerdefaultargsoptions">puppeteer.defaultArgs([options])</a></li>
 <li><a href="#puppeteerexecutablepath">puppeteer.executablePath()</a></li>
 <li><a href="#puppeteerlaunchoptions">puppeteer.launch([options])</a></li>
 </ul>
@@ -27,15 +47,33 @@
 <li><a href="#event-targetchanged">event: &#39;targetchanged&#39;</a></li>
 <li><a href="#event-targetcreated">event: &#39;targetcreated&#39;</a></li>
 <li><a href="#event-targetdestroyed">event: &#39;targetdestroyed&#39;</a></li>
+<li><a href="#browserbrowsercontexts">browser.browserContexts()</a></li>
 <li><a href="#browserclose">browser.close()</a></li>
+<li><a href="#browsercreateincognitobrowsercontext">browser.createIncognitoBrowserContext()</a></li>
+<li><a href="#browserdefaultbrowsercontext">browser.defaultBrowserContext()</a></li>
 <li><a href="#browserdisconnect">browser.disconnect()</a></li>
 <li><a href="#browsernewpage">browser.newPage()</a></li>
 <li><a href="#browserpages">browser.pages()</a></li>
 <li><a href="#browserprocess">browser.process()</a></li>
+<li><a href="#browsertarget">browser.target()</a></li>
 <li><a href="#browsertargets">browser.targets()</a></li>
 <li><a href="#browseruseragent">browser.userAgent()</a></li>
 <li><a href="#browserversion">browser.version()</a></li>
 <li><a href="#browserwsendpoint">browser.wsEndpoint()</a></li>
+</ul>
+</li>
+<li><a href="#class-browsercontext">class: BrowserContext</a><ul>
+<li><a href="#event-targetchanged-1">event: &#39;targetchanged&#39;</a></li>
+<li><a href="#event-targetcreated-1">event: &#39;targetcreated&#39;</a></li>
+<li><a href="#event-targetdestroyed-1">event: &#39;targetdestroyed&#39;</a></li>
+<li><a href="#browsercontextbrowser">browserContext.browser()</a></li>
+<li><a href="#browsercontextclearpermissionoverrides">browserContext.clearPermissionOverrides()</a></li>
+<li><a href="#browsercontextclose">browserContext.close()</a></li>
+<li><a href="#browsercontextisincognito">browserContext.isIncognito()</a></li>
+<li><a href="#browsercontextnewpage">browserContext.newPage()</a></li>
+<li><a href="#browsercontextoverridepermissionsorigin-permissions">browserContext.overridePermissions(origin, permissions)</a></li>
+<li><a href="#browsercontextpages">browserContext.pages()</a></li>
+<li><a href="#browsercontexttargets">browserContext.targets()</a></li>
 </ul>
 </li>
 <li><a href="#class-page">class: Page</a><ul>
@@ -54,17 +92,20 @@
 <li><a href="#event-requestfailed">event: &#39;requestfailed&#39;</a></li>
 <li><a href="#event-requestfinished">event: &#39;requestfinished&#39;</a></li>
 <li><a href="#event-response">event: &#39;response&#39;</a></li>
+<li><a href="#event-workercreated">event: &#39;workercreated&#39;</a></li>
+<li><a href="#event-workerdestroyed">event: &#39;workerdestroyed&#39;</a></li>
 <li><a href="#pageselector">page.$(selector)</a></li>
-<li><a href="#pageselector">page.$$(selector)</a></li>
+<li><a href="#pageselector-1">page.$$(selector)</a></li>
 <li><a href="#pageevalselector-pagefunction-args">page.$$eval(selector, pageFunction[, ...args])</a></li>
-<li><a href="#pageevalselector-pagefunction-args">page.$eval(selector, pageFunction[, ...args])</a></li>
+<li><a href="#pageevalselector-pagefunction-args-1">page.$eval(selector, pageFunction[, ...args])</a></li>
 <li><a href="#pagexexpression">page.$x(expression)</a></li>
 <li><a href="#pageaddscripttagoptions">page.addScriptTag(options)</a></li>
 <li><a href="#pageaddstyletagoptions">page.addStyleTag(options)</a></li>
 <li><a href="#pageauthenticatecredentials">page.authenticate(credentials)</a></li>
 <li><a href="#pagebringtofront">page.bringToFront()</a></li>
+<li><a href="#pagebrowser">page.browser()</a></li>
 <li><a href="#pageclickselector-options">page.click(selector[, options])</a></li>
-<li><a href="#pageclose">page.close()</a></li>
+<li><a href="#pagecloseoptions">page.close(options)</a></li>
 <li><a href="#pagecontent">page.content()</a></li>
 <li><a href="#pagecookiesurls">page.cookies(...urls)</a></li>
 <li><a href="#pagecoverage">page.coverage</a></li>
@@ -81,6 +122,7 @@
 <li><a href="#pagegoforwardoptions">page.goForward(options)</a></li>
 <li><a href="#pagegotourl-options">page.goto(url, options)</a></li>
 <li><a href="#pagehoverselector">page.hover(selector)</a></li>
+<li><a href="#pageisclosed">page.isClosed()</a></li>
 <li><a href="#pagekeyboard">page.keyboard</a></li>
 <li><a href="#pagemainframe">page.mainFrame()</a></li>
 <li><a href="#pagemetrics">page.metrics()</a></li>
@@ -96,6 +138,7 @@
 <li><a href="#pagesetcookiecookies">page.setCookie(...cookies)</a></li>
 <li><a href="#pagesetdefaultnavigationtimeouttimeout">page.setDefaultNavigationTimeout(timeout)</a></li>
 <li><a href="#pagesetextrahttpheadersheaders">page.setExtraHTTPHeaders(headers)</a></li>
+<li><a href="#pagesetgeolocationoptions">page.setGeolocation(options)</a></li>
 <li><a href="#pagesetjavascriptenabledenabled">page.setJavaScriptEnabled(enabled)</a></li>
 <li><a href="#pagesetofflinemodeenabled">page.setOfflineMode(enabled)</a></li>
 <li><a href="#pagesetrequestinterceptionvalue">page.setRequestInterception(value)</a></li>
@@ -112,8 +155,18 @@
 <li><a href="#pagewaitforselectororfunctionortimeout-options-args">page.waitFor(selectorOrFunctionOrTimeout[, options[, ...args]])</a></li>
 <li><a href="#pagewaitforfunctionpagefunction-options-args">page.waitForFunction(pageFunction[, options[, ...args]])</a></li>
 <li><a href="#pagewaitfornavigationoptions">page.waitForNavigation(options)</a></li>
+<li><a href="#pagewaitforrequesturlorpredicate-options">page.waitForRequest(urlOrPredicate, options)</a></li>
+<li><a href="#pagewaitforresponseurlorpredicate-options">page.waitForResponse(urlOrPredicate, options)</a></li>
 <li><a href="#pagewaitforselectorselector-options">page.waitForSelector(selector[, options])</a></li>
 <li><a href="#pagewaitforxpathxpath-options">page.waitForXPath(xpath[, options])</a></li>
+<li><a href="#pageworkers">page.workers()</a></li>
+</ul>
+</li>
+<li><a href="#class-worker">class: Worker</a><ul>
+<li><a href="#workerevaluatepagefunction-args">worker.evaluate(pageFunction, ...args)</a></li>
+<li><a href="#workerevaluatehandlepagefunction-args">worker.evaluateHandle(pageFunction, ...args)</a></li>
+<li><a href="#workerexecutioncontext">worker.executionContext()</a></li>
+<li><a href="#workerurl">worker.url()</a></li>
 </ul>
 </li>
 <li><a href="#class-keyboard">class: Keyboard</a><ul>
@@ -156,9 +209,9 @@
 </li>
 <li><a href="#class-frame">class: Frame</a><ul>
 <li><a href="#frameselector">frame.$(selector)</a></li>
-<li><a href="#frameselector">frame.$$(selector)</a></li>
+<li><a href="#frameselector-1">frame.$$(selector)</a></li>
 <li><a href="#frameevalselector-pagefunction-args">frame.$$eval(selector, pageFunction[, ...args])</a></li>
-<li><a href="#frameevalselector-pagefunction-args">frame.$eval(selector, pageFunction[, ...args])</a></li>
+<li><a href="#frameevalselector-pagefunction-args-1">frame.$eval(selector, pageFunction[, ...args])</a></li>
 <li><a href="#framexexpression">frame.$x(expression)</a></li>
 <li><a href="#frameaddscripttagoptions">frame.addScriptTag(options)</a></li>
 <li><a href="#frameaddstyletagoptions">frame.addStyleTag(options)</a></li>
@@ -169,6 +222,7 @@
 <li><a href="#frameevaluatehandlepagefunction-args">frame.evaluateHandle(pageFunction, ...args)</a></li>
 <li><a href="#frameexecutioncontext">frame.executionContext()</a></li>
 <li><a href="#framefocusselector">frame.focus(selector)</a></li>
+<li><a href="#framegotourl-options">frame.goto(url, options)</a></li>
 <li><a href="#framehoverselector">frame.hover(selector)</a></li>
 <li><a href="#frameisdetached">frame.isDetached()</a></li>
 <li><a href="#framename">frame.name()</a></li>
@@ -181,6 +235,7 @@
 <li><a href="#frameurl">frame.url()</a></li>
 <li><a href="#framewaitforselectororfunctionortimeout-options-args">frame.waitFor(selectorOrFunctionOrTimeout[, options[, ...args]])</a></li>
 <li><a href="#framewaitforfunctionpagefunction-options-args">frame.waitForFunction(pageFunction[, options[, ...args]])</a></li>
+<li><a href="#framewaitfornavigationoptions">frame.waitForNavigation(options)</a></li>
 <li><a href="#framewaitforselectorselector-options">frame.waitForSelector(selector[, options])</a></li>
 <li><a href="#framewaitforxpathxpath-options">frame.waitForXPath(xpath[, options])</a></li>
 </ul>
@@ -203,7 +258,9 @@
 </li>
 <li><a href="#class-elementhandle">class: ElementHandle</a><ul>
 <li><a href="#elementhandleselector">elementHandle.$(selector)</a></li>
-<li><a href="#elementhandleselector">elementHandle.$$(selector)</a></li>
+<li><a href="#elementhandleselector-1">elementHandle.$$(selector)</a></li>
+<li><a href="#elementhandleevalselector-pagefunction-args">elementHandle.$$eval(selector, pageFunction, ...args)</a></li>
+<li><a href="#elementhandleevalselector-pagefunction-args-1">elementHandle.$eval(selector, pageFunction, ...args)</a></li>
 <li><a href="#elementhandlexexpression">elementHandle.$x(expression)</a></li>
 <li><a href="#elementhandleaselement">elementHandle.asElement()</a></li>
 <li><a href="#elementhandleboundingbox">elementHandle.boundingBox()</a></li>
@@ -216,6 +273,7 @@
 <li><a href="#elementhandlegetproperties">elementHandle.getProperties()</a></li>
 <li><a href="#elementhandlegetpropertypropertyname">elementHandle.getProperty(propertyName)</a></li>
 <li><a href="#elementhandlehover">elementHandle.hover()</a></li>
+<li><a href="#elementhandleisintersectingviewport">elementHandle.isIntersectingViewport()</a></li>
 <li><a href="#elementhandlejsonvalue">elementHandle.jsonValue()</a></li>
 <li><a href="#elementhandlepresskey-options">elementHandle.press(key[, options])</a></li>
 <li><a href="#elementhandlescreenshotoptions">elementHandle.screenshot([options])</a></li>
@@ -231,6 +289,7 @@
 <li><a href="#requestfailure">request.failure()</a></li>
 <li><a href="#requestframe">request.frame()</a></li>
 <li><a href="#requestheaders">request.headers()</a></li>
+<li><a href="#requestisnavigationrequest">request.isNavigationRequest()</a></li>
 <li><a href="#requestmethod">request.method()</a></li>
 <li><a href="#requestpostdata">request.postData()</a></li>
 <li><a href="#requestredirectchain">request.redirectChain()</a></li>
@@ -242,14 +301,17 @@
 </li>
 <li><a href="#class-response">class: Response</a><ul>
 <li><a href="#responsebuffer">response.buffer()</a></li>
+<li><a href="#responseframe">response.frame()</a></li>
 <li><a href="#responsefromcache">response.fromCache()</a></li>
 <li><a href="#responsefromserviceworker">response.fromServiceWorker()</a></li>
 <li><a href="#responseheaders">response.headers()</a></li>
 <li><a href="#responsejson">response.json()</a></li>
 <li><a href="#responseok">response.ok()</a></li>
+<li><a href="#responseremoteaddress">response.remoteAddress()</a></li>
 <li><a href="#responserequest">response.request()</a></li>
 <li><a href="#responsesecuritydetails">response.securityDetails()</a></li>
 <li><a href="#responsestatus">response.status()</a></li>
+<li><a href="#responsestatustext">response.statusText()</a></li>
 <li><a href="#responsetext">response.text()</a></li>
 <li><a href="#responseurl">response.url()</a></li>
 </ul>
@@ -263,7 +325,10 @@
 </ul>
 </li>
 <li><a href="#class-target">class: Target</a><ul>
+<li><a href="#targetbrowser">target.browser()</a></li>
+<li><a href="#targetbrowsercontext">target.browserContext()</a></li>
 <li><a href="#targetcreatecdpsession">target.createCDPSession()</a></li>
+<li><a href="#targetopener">target.opener()</a></li>
 <li><a href="#targetpage">target.page()</a></li>
 <li><a href="#targettype">target.type()</a></li>
 <li><a href="#targeturl">target.url()</a></li>
@@ -281,28 +346,111 @@
 <li><a href="#coveragestopjscoverage">coverage.stopJSCoverage()</a></li>
 </ul>
 </li>
+<li><a href="#class-timeouterror">class: TimeoutError</a><!-- GEN:stop -->
+</li>
 </ul>
-<!-- tocstop -->
 <h3 id="overview">Overview</h3>
 <p>Puppeteer is a Node library which provides a high-level API to control Chromium or Chrome over the DevTools Protocol.</p>
-<p>The Puppeteer API is hierarchical and mirrors the browser structure. On the following diagram, faded entities are not currently represented in Puppeteer.</p>
-<p><img src="https://user-images.githubusercontent.com/746130/31592143-089f6f9a-b1db-11e7-9a20-16b7fc754fa1.png" alt="puppeteer overview"></p>
+<p>The Puppeteer API is hierarchical and mirrors the browser structure.</p>
+<blockquote>
+<p><strong>NOTE</strong> On the following diagram, faded entities are not currently represented in Puppeteer.</p>
+</blockquote>
+<p><img src="https://user-images.githubusercontent.com/746130/40333229-5df5480c-5d0c-11e8-83cb-c3e371de7374.png" alt="puppeteer overview"></p>
 <ul>
 <li><a href="#class-puppeteer"><code>Puppeteer</code></a> communicates with the browser using <a href="https://chromedevtools.github.io/devtools-protocol/">DevTools Protocol</a>.</li>
-<li><a href="#class-browser"><code>Browser</code></a> instance can own multiple pages.</li>
+<li><a href="#class-browser"><code>Browser</code></a> instance can own multiple browser contexts.</li>
+<li><a href="#class-browsercontext"><code>BrowserContext</code></a> instance defines a browsing session and can own multiple pages.</li>
 <li><a href="#class-page"><code>Page</code></a> has at least one frame: main frame. There might be other frames created by <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe">iframe</a> or <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/frame">frame</a> tags.</li>
 <li><a href="#class-frame"><code>Frame</code></a> has at least one execution context - the default execution context - where the frame&#39;s JavaScript is executed. A Frame might have additional execution contexts that are associated with <a href="https://developer.chrome.com/extensions">extensions</a>.</li>
+<li><a href="#class-worker"><code>Worker</code></a> has a single execution context and facilitates interacting with <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API">WebWorkers</a>.</li>
 </ul>
 <p>(Diagram source: <a href="https://docs.google.com/drawings/d/1Q_AM6KYs9kbyLZF-Lpp5mtpAWth73Cq8IKCsWYgi8MM/edit?usp=sharing">link</a>)</p>
+<h3 id="puppeteer-vs-puppeteer-core">puppeteer vs puppeteer-core</h3>
+<p>Every release since v1.7.0 we publish two packages:</p>
+<ul>
+<li><a href="https://www.npmjs.com/package/puppeteer">puppeteer</a></li>
+<li><a href="https://www.npmjs.com/package/puppeteer-core">puppeteer-core</a></li>
+</ul>
+<p><code>puppeteer</code> is a <em>product</em> for browser automation. When installed, it downloads a version of
+Chromium, which it then drives using <code>puppeteer-core</code>. Being an end-user product, <code>puppeteer</code> supports a bunch of convenient <code>PUPPETEER_*</code> env variables to tweak its behavior.</p>
+<p><code>puppeteer-core</code> is a <em>library</em> to help drive anything that supports DevTools protocol. <code>puppeteer-core</code> doesn&#39;t download Chromium when installed. Being a library, <code>puppeteer-core</code> is fully driven
+through its programmatic interface and disregards all the <code>PUPPETEER_*</code> env variables.</p>
+<p>To sum up, the only differences between <code>puppeteer-core</code> and <code>puppeteer</code> are:</p>
+<ul>
+<li><code>puppeteer-core</code> doesn&#39;t automatically download Chromium when installed.</li>
+<li><code>puppeteer-core</code> ignores all <code>PUPPETEER_*</code> env variables.</li>
+</ul>
+<p>In most cases, you&#39;ll be fine using the <code>puppeteer</code> package.</p>
+<p>However, you should use <code>puppeteer-core</code> if:</p>
+<ul>
+<li>you&#39;re building another end-user product or library atop of DevTools protocol. For example, one might build PDF generator using <code>puppeteer-core</code> and write a custom <code>install.js</code> script that downloads <a href="https://chromium.googlesource.com/chromium/src/+/lkgr/headless/README.md"><code>headless_shell</code></a> instead of Chromium to save disk space.</li>
+<li>you&#39;re bundling Puppeteer to use in Chrome Extension / browser with the DevTools protocol where downloading an additional Chromium binary is unnecessary.</li>
+</ul>
+<p>When using <code>puppeteer-core</code>, remember to change the <em>include</em> line:</p>
+<pre><code class="lang-js"><span class="hljs-attribute">const puppeteer</span> = require(<span class="hljs-string">'puppeteer-core'</span>);
+</code></pre>
 <h3 id="environment-variables">Environment Variables</h3>
 <p>Puppeteer looks for certain <a href="https://en.wikipedia.org/wiki/Environment_variable">environment variables</a> to aid its operations.
-If puppeteer doesn&#39;t find them in environment, lowercased variant of these variables will be used from the <a href="https://docs.npmjs.com/cli/config">npm config</a>.</p>
+If Puppeteer doesn&#39;t find them in the environment during the installation step, a lowercased variant of these variables will be used from the <a href="https://docs.npmjs.com/cli/config">npm config</a>.</p>
 <ul>
 <li><code>HTTP_PROXY</code>, <code>HTTPS_PROXY</code>, <code>NO_PROXY</code> - defines HTTP proxy settings that are used to download and run Chromium.</li>
 <li><code>PUPPETEER_SKIP_CHROMIUM_DOWNLOAD</code> - do not download bundled Chromium during installation step.</li>
 <li><code>PUPPETEER_DOWNLOAD_HOST</code> - overwrite host part of URL that is used to download Chromium</li>
-<li><code>PUPPETEER_CHROMIUM_REVISION</code> - specify a certain version of chrome you&#39;d like puppeteer to use during the installation step.</li>
+<li><code>PUPPETEER_CHROMIUM_REVISION</code> - specify a certain version of Chromium you&#39;d like Puppeteer to use. See <a href="#puppeteerlaunchoptions">puppeteer.launch([options])</a> on how executable path is inferred. <strong>BEWARE</strong>: Puppeteer is only <a href="https://github.com/GoogleChrome/puppeteer/#q-why-doesnt-puppeteer-vxxx-work-with-chromium-vyyy">guaranteed to work</a> with the bundled Chromium, use at your own risk.</li>
+<li><code>PUPPETEER_EXECUTABLE_PATH</code> - specify an executable path to be used in <code>puppeteer.launch</code>. See <a href="#puppeteerlaunchoptions">puppeteer.launch([options])</a> on how the executable path is inferred. <strong>BEWARE</strong>: Puppeteer is only <a href="https://github.com/GoogleChrome/puppeteer/#q-why-doesnt-puppeteer-vxxx-work-with-chromium-vyyy">guaranteed to work</a> with the bundled Chromium, use at your own risk.</li>
 </ul>
+<blockquote>
+<p><strong>NOTE</strong> PUPPETEER_* env variables are not accounted for in the <a href="https://www.npmjs.com/package/puppeteer-core"><code>puppeteer-core</code></a> package.</p>
+</blockquote>
+<h3 id="error-handling">Error handling</h3>
+<p>Puppeteer methods might throw errors if they are unable to fufill a request. For example, <a href="#pagewaitforselectorselector-options">page.waitForSelector(selector[, options])</a>
+might fail if the selector doesn&#39;t match any nodes during the given timeframe.</p>
+<p>For certain types of errors Puppeteer uses specific error classes.
+These classes are available via <code>require(&#39;puppeteer/Errors&#39;)</code>.</p>
+<p>List of supported classes:</p>
+<ul>
+<li><a href="#class-timeouterror"><code>TimeoutError</code></a></li>
+</ul>
+<p>An example of handling a timeout error:</p>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> {TimeoutError} = <span class="hljs-built_in">require</span>(<span class="hljs-string">'puppeteer/Errors'</span>);
+
+<span class="hljs-comment">// ...</span>
+
+<span class="hljs-keyword">try</span> {
+  <span class="hljs-keyword">await</span> page.waitForSelector(<span class="hljs-string">'.foo'</span>);
+} <span class="hljs-keyword">catch</span> (e) {
+  <span class="hljs-keyword">if</span> (e <span class="hljs-keyword">instanceof</span> TimeoutError) {
+    <span class="hljs-comment">// Do something if this is a timeout.</span>
+  }
+}
+</code></pre>
+<h3 id="working-with-chrome-extensions">Working with Chrome Extensions</h3>
+<p>Puppeteer can be used for testing Chrome Extensions.</p>
+<blockquote>
+<p><strong>NOTE</strong> Extensions in Chrome / Chromium currently only work in non-headless mode.</p>
+</blockquote>
+<p>The following is code for getting a handle to the <a href="https://developer.chrome.com/extensions/background_pages">background page</a> of an extension whose source is located in <code>./my-extension</code>:</p>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> puppeteer = <span class="hljs-built_in">require</span>(<span class="hljs-string">'puppeteer'</span>);
+
+<span class="hljs-function">(<span class="hljs-params"><span class="hljs-keyword">async</span> (</span>) =&gt;</span> {
+  <span class="hljs-keyword">const</span> pathToExtension = <span class="hljs-built_in">require</span>(<span class="hljs-string">'path'</span>).join(__dirname, <span class="hljs-string">'my-extension'</span>);
+  <span class="hljs-keyword">const</span> browser = puppeteer.launch({
+    <span class="hljs-attr">headless</span>: <span class="hljs-literal">false</span>,
+    <span class="hljs-attr">args</span>: [
+      <span class="hljs-string">`--disable-extensions-except=<span class="hljs-subst">${pathToExtension}</span>`</span>,
+      <span class="hljs-string">`--load-extension=<span class="hljs-subst">${pathToExtension}</span>`</span>
+    ]
+  });
+  <span class="hljs-keyword">const</span> targets = <span class="hljs-keyword">await</span> browser.targets();
+  <span class="hljs-keyword">const</span> backgroundPageTarget = targets.find(<span class="hljs-function"><span class="hljs-params">target</span> =&gt;</span> target.type() === <span class="hljs-string">'background_page'</span>);
+  <span class="hljs-keyword">const</span> backgroundPage = <span class="hljs-keyword">await</span> backgroundPageTarget.page();
+  <span class="hljs-comment">// Test the background page as you would any other page.</span>
+  <span class="hljs-keyword">await</span> browser.close();
+})();
+</code></pre>
+<blockquote>
+<p><strong>NOTE</strong> It is not yet possible to test extension popups or content scripts.</p>
+</blockquote>
 <h3 id="class-puppeteer">class: Puppeteer</h3>
 <p>Puppeteer module provides a method to launch a Chromium instance.
 The following is a typical example of using Puppeteer to drive automation:</p>
@@ -320,6 +468,15 @@ puppeteer.launch().then(<span class="hljs-keyword">async</span> browser =&gt; {
 <li><code>options</code> &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" title="Object">Object</a>&gt;<ul>
 <li><code>browserWSEndpoint</code> &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" title="String">string</a>&gt; a <a href="#browserwsendpoint">browser websocket endpoint</a> to connect to.</li>
 <li><code>ignoreHTTPSErrors</code> &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Boolean_type" title="Boolean">boolean</a>&gt; Whether to ignore HTTPS errors during navigation. Defaults to <code>false</code>.</li>
+<li><code>defaultViewport</code> &lt;?<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" title="Object">Object</a>&gt; Sets a consistent viewport for each page. Defaults to an 800x600 viewport. <code>null</code> disables the default viewport.<ul>
+<li><code>width</code> &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" title="Number">number</a>&gt; page width in pixels.</li>
+<li><code>height</code> &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" title="Number">number</a>&gt; page height in pixels.</li>
+<li><code>deviceScaleFactor</code> &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" title="Number">number</a>&gt; Specify device scale factor (can be thought of as dpr). Defaults to <code>1</code>.</li>
+<li><code>isMobile</code> &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Boolean_type" title="Boolean">boolean</a>&gt; Whether the <code>meta viewport</code> tag is taken into account. Defaults to <code>false</code>.</li>
+<li><code>hasTouch</code>&lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Boolean_type" title="Boolean">boolean</a>&gt; Specifies if viewport supports touch events. Defaults to <code>false</code></li>
+<li><code>isLandscape</code> &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Boolean_type" title="Boolean">boolean</a>&gt; Specifies if viewport is in landscape mode. Defaults to <code>false</code>.</li>
+</ul>
+</li>
 <li><code>slowMo</code> &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" title="Number">number</a>&gt; Slows down Puppeteer operations by the specified amount of milliseconds. Useful so that you can see what is going on.</li>
 </ul>
 </li>
@@ -336,10 +493,18 @@ puppeteer.launch().then(<span class="hljs-keyword">async</span> browser =&gt; {
 </li>
 <li>returns: &lt;<a href="#class-browserfetcher" title="BrowserFetcher">BrowserFetcher</a>&gt;</li>
 </ul>
-<h4 id="puppeteer-defaultargs-">puppeteer.defaultArgs()</h4>
+<h4 id="puppeteer-defaultargs-options-">puppeteer.defaultArgs([options])</h4>
 <ul>
-<li>returns: &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array" title="Array">Array</a>&lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" title="String">string</a>&gt;&gt; The default flags that Chromium will be launched with.</li>
+<li><code>options</code> &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" title="Object">Object</a>&gt;  Set of configurable options to set on the browser. Can have the following fields:<ul>
+<li><code>headless</code> &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Boolean_type" title="Boolean">boolean</a>&gt; Whether to run browser in <a href="https://developers.google.com/web/updates/2017/04/headless-chrome">headless mode</a>. Defaults to <code>true</code> unless the <code>devtools</code> option is <code>true</code>.</li>
+<li><code>args</code> &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array" title="Array">Array</a>&lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" title="String">string</a>&gt;&gt; Additional arguments to pass to the browser instance. The list of Chromium flags can be found <a href="http://peter.sh/experiments/chromium-command-line-switches/">here</a>.</li>
+<li><code>userDataDir</code> &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" title="String">string</a>&gt; Path to a <a href="https://chromium.googlesource.com/chromium/src/+/master/docs/user_data_dir.md">User Data Directory</a>.</li>
+<li><code>devtools</code> &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Boolean_type" title="Boolean">boolean</a>&gt; Whether to auto-open a DevTools panel for each tab. If this option is <code>true</code>, the <code>headless</code> option will be set <code>false</code>.</li>
 </ul>
+</li>
+<li>returns: &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array" title="Array">Array</a>&lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" title="String">string</a>&gt;&gt;</li>
+</ul>
+<p>The default flags that Chromium will be launched with.</p>
 <h4 id="puppeteer-executablepath-">puppeteer.executablePath()</h4>
 <ul>
 <li>returns: &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" title="String">string</a>&gt; A path where Puppeteer expects to find bundled Chromium. Chromium might not exist there if the download was skipped with <a href="#environment-variables"><code>PUPPETEER_SKIP_CHROMIUM_DOWNLOAD</code></a>.</li>
@@ -349,10 +514,19 @@ puppeteer.launch().then(<span class="hljs-keyword">async</span> browser =&gt; {
 <li><code>options</code> &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" title="Object">Object</a>&gt;  Set of configurable options to set on the browser. Can have the following fields:<ul>
 <li><code>ignoreHTTPSErrors</code> &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Boolean_type" title="Boolean">boolean</a>&gt; Whether to ignore HTTPS errors during navigation. Defaults to <code>false</code>.</li>
 <li><code>headless</code> &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Boolean_type" title="Boolean">boolean</a>&gt; Whether to run browser in <a href="https://developers.google.com/web/updates/2017/04/headless-chrome">headless mode</a>. Defaults to <code>true</code> unless the <code>devtools</code> option is <code>true</code>.</li>
-<li><code>executablePath</code> &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" title="String">string</a>&gt; Path to a Chromium or Chrome executable to run instead of the bundled Chromium. If <code>executablePath</code> is a relative path, then it is resolved relative to <a href="https://nodejs.org/api/process.html#process_process_cwd">current working directory</a>.</li>
+<li><code>executablePath</code> &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" title="String">string</a>&gt; Path to a Chromium or Chrome executable to run instead of the bundled Chromium. If <code>executablePath</code> is a relative path, then it is resolved relative to <a href="https://nodejs.org/api/process.html#process_process_cwd">current working directory</a>. <strong>BEWARE</strong>: Puppeteer is only <a href="https://github.com/GoogleChrome/puppeteer/#q-why-doesnt-puppeteer-vxxx-work-with-chromium-vyyy">guaranteed to work</a> with the bundled Chromium, use at your own risk.</li>
 <li><code>slowMo</code> &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" title="Number">number</a>&gt; Slows down Puppeteer operations by the specified amount of milliseconds. Useful so that you can see what is going on.</li>
+<li><code>defaultViewport</code> &lt;?<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" title="Object">Object</a>&gt; Sets a consistent viewport for each page. Defaults to an 800x600 viewport. <code>null</code> disables the default viewport.<ul>
+<li><code>width</code> &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" title="Number">number</a>&gt; page width in pixels.</li>
+<li><code>height</code> &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" title="Number">number</a>&gt; page height in pixels.</li>
+<li><code>deviceScaleFactor</code> &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" title="Number">number</a>&gt; Specify device scale factor (can be thought of as dpr). Defaults to <code>1</code>.</li>
+<li><code>isMobile</code> &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Boolean_type" title="Boolean">boolean</a>&gt; Whether the <code>meta viewport</code> tag is taken into account. Defaults to <code>false</code>.</li>
+<li><code>hasTouch</code>&lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Boolean_type" title="Boolean">boolean</a>&gt; Specifies if viewport supports touch events. Defaults to <code>false</code></li>
+<li><code>isLandscape</code> &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Boolean_type" title="Boolean">boolean</a>&gt; Specifies if viewport is in landscape mode. Defaults to <code>false</code>.</li>
+</ul>
+</li>
 <li><code>args</code> &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array" title="Array">Array</a>&lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" title="String">string</a>&gt;&gt; Additional arguments to pass to the browser instance. The list of Chromium flags can be found <a href="http://peter.sh/experiments/chromium-command-line-switches/">here</a>.</li>
-<li><code>ignoreDefaultArgs</code> &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Boolean_type" title="Boolean">boolean</a>&gt; Do not use <a href="#puppeteerdefaultargs"><code>puppeteer.defaultArgs()</code></a>. Dangerous option; use with care. Defaults to <code>false</code>.</li>
+<li><code>ignoreDefaultArgs</code> &lt;(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Boolean_type" title="Boolean">boolean</a>|&lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array" title="Array">Array</a>&lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" title="String">string</a>&gt;&gt;)&gt; If <code>true</code>, then do not use <a href="#puppeteerdefaultargs-options"><code>puppeteer.defaultArgs()</code></a>. If an array is given, then filter out the given default arguments. Dangerous option; use with care. Defaults to <code>false</code>.</li>
 <li><code>handleSIGINT</code> &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Boolean_type" title="Boolean">boolean</a>&gt; Close the browser process on Ctrl-C. Defaults to <code>true</code>.</li>
 <li><code>handleSIGTERM</code> &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Boolean_type" title="Boolean">boolean</a>&gt; Close the browser process on SIGTERM. Defaults to <code>true</code>.</li>
 <li><code>handleSIGHUP</code> &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Boolean_type" title="Boolean">boolean</a>&gt; Close the browser process on SIGHUP. Defaults to <code>true</code>.</li>
@@ -366,7 +540,11 @@ puppeteer.launch().then(<span class="hljs-keyword">async</span> browser =&gt; {
 </li>
 <li>returns: &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" title="Promise">Promise</a>&lt;<a href="#class-browser" title="Browser">Browser</a>&gt;&gt; Promise which resolves to browser instance.</li>
 </ul>
-<p>The method launches a browser instance with given arguments. The browser will be closed when the parent node.js process is closed.</p>
+<p>You can use <code>ignoreDefaultArgs</code> to filter out <code>--mute-audio</code> from default arguments:</p>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> browser = <span class="hljs-function">await puppeteer.<span class="hljs-title">launch</span><span class="hljs-params">({
+  ignoreDefaultArgs: [<span class="hljs-string">'--mute-audio'</span>]
+})</span></span>;
+</code></pre>
 <blockquote>
 <p><strong>NOTE</strong> Puppeteer can also be used to control the Chrome browser, but it works best with the version of Chromium it is bundled with. There is no guarantee it will work with any other version. Use <code>executablePath</code> option with extreme caution.</p>
 <p>If Google Chrome (rather than Chromium) is preferred, a <a href="https://www.google.com/chrome/browser/canary.html">Chrome Canary</a> or <a href="https://www.chromium.org/getting-involved/dev-channel">Dev Channel</a> build is suggested.</p>
@@ -376,7 +554,7 @@ puppeteer.launch().then(<span class="hljs-keyword">async</span> browser =&gt; {
 <h3 id="class-browserfetcher">class: BrowserFetcher</h3>
 <p>BrowserFetcher can download and manage different versions of Chromium.</p>
 <p>BrowserFetcher operates on revision strings that specify a precise version of Chromium, e.g. <code>&quot;533271&quot;</code>. Revision strings can be obtained from <a href="http://omahaproxy.appspot.com/">omahaproxy.appspot.com</a>.</p>
-<p>Example on how to use BrowserFetcher to download a specific version of Chromium and run
+<p>An example of using BrowserFetcher to download a specific version of Chromium and running
 Puppeteer against it:</p>
 <pre><code class="lang-js"><span class="hljs-keyword">const</span> browserFetcher = puppeteer.createBrowserFetcher();
 <span class="hljs-keyword">const</span> revisionInfo = <span class="hljs-keyword">await</span> browserFetcher.download(<span class="hljs-string">'533271'</span>);
@@ -475,39 +653,82 @@ puppeteer.launch().then(<span class="hljs-keyword">async</span> browser =&gt; {
 <li>&lt;<a href="#class-target" title="Target">Target</a>&gt;</li>
 </ul>
 <p>Emitted when the url of a target changes.</p>
+<blockquote>
+<p><strong>NOTE</strong> This includes target changes in incognito browser contexts.</p>
+</blockquote>
 <h4 id="event-targetcreated-">event: &#39;targetcreated&#39;</h4>
 <ul>
 <li>&lt;<a href="#class-target" title="Target">Target</a>&gt;</li>
 </ul>
 <p>Emitted when a target is created, for example when a new page is opened by <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/open"><code>window.open</code></a> or <a href="#browsernewpage"><code>browser.newPage</code></a>.</p>
+<blockquote>
+<p><strong>NOTE</strong> This includes target creations in incognito browser contexts.</p>
+</blockquote>
 <h4 id="event-targetdestroyed-">event: &#39;targetdestroyed&#39;</h4>
 <ul>
 <li>&lt;<a href="#class-target" title="Target">Target</a>&gt;</li>
 </ul>
 <p>Emitted when a target is destroyed, for example when a page is closed.</p>
+<blockquote>
+<p><strong>NOTE</strong> This includes target destructions in incognito browser contexts.</p>
+</blockquote>
+<h4 id="browser-browsercontexts-">browser.browserContexts()</h4>
+<ul>
+<li>returns: &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array" title="Array">Array</a>&lt;<a href="#class-browsercontext" title="BrowserContext">BrowserContext</a>&gt;&gt;</li>
+</ul>
+<p>Returns an array of all open browser contexts. In a newly created browser, this will return
+a single instance of <a href="#class-browsercontext" title="BrowserContext">BrowserContext</a>.</p>
 <h4 id="browser-close-">browser.close()</h4>
 <ul>
 <li>returns: &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" title="Promise">Promise</a>&gt;</li>
 </ul>
 <p>Closes Chromium and all of its pages (if any were opened). The <a href="#class-browser" title="Browser">Browser</a> object itself is considered to be disposed and cannot be used anymore.</p>
+<h4 id="browser-createincognitobrowsercontext-">browser.createIncognitoBrowserContext()</h4>
+<ul>
+<li>returns: &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" title="Promise">Promise</a>&lt;<a href="#class-browsercontext" title="BrowserContext">BrowserContext</a>&gt;&gt;</li>
+</ul>
+<p>Creates a new incognito browser context. This won&#39;t share cookies/cache with other browser contexts.</p>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> browser = <span class="hljs-keyword">await</span> puppeteer.launch();
+<span class="hljs-comment">// Create a new incognito browser context.</span>
+<span class="hljs-keyword">const</span> context = <span class="hljs-keyword">await</span> browser.createIncognitoBrowserContext();
+<span class="hljs-comment">// Create a new page in a pristine context.</span>
+<span class="hljs-keyword">const</span> page = <span class="hljs-keyword">await</span> context.newPage();
+<span class="hljs-comment">// Do stuff</span>
+<span class="hljs-keyword">await</span> page.<span class="hljs-keyword">goto</span>(<span class="hljs-string">'https://example.com'</span>);
+</code></pre>
+<h4 id="browser-defaultbrowsercontext-">browser.defaultBrowserContext()</h4>
+<ul>
+<li>returns: &lt;<a href="#class-browsercontext" title="BrowserContext">BrowserContext</a>&gt;</li>
+</ul>
+<p>Returns the default browser context. The default browser context can not be closed.</p>
 <h4 id="browser-disconnect-">browser.disconnect()</h4>
 <p>Disconnects Puppeteer from the browser, but leaves the Chromium process running. After calling <code>disconnect</code>, the <a href="#class-browser" title="Browser">Browser</a> object is considered disposed and cannot be used anymore.</p>
 <h4 id="browser-newpage-">browser.newPage()</h4>
 <ul>
-<li>returns: &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" title="Promise">Promise</a>&lt;<a href="#class-page" title="Page">Page</a>&gt;&gt; Promise which resolves to a new <a href="#class-page" title="Page">Page</a> object.</li>
+<li>returns: &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" title="Promise">Promise</a>&lt;<a href="#class-page" title="Page">Page</a>&gt;&gt;</li>
 </ul>
+<p>Promise which resolves to a new <a href="#class-page" title="Page">Page</a> object. The <a href="#class-page" title="Page">Page</a> is created in a default browser context.</p>
 <h4 id="browser-pages-">browser.pages()</h4>
 <ul>
-<li>returns: &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" title="Promise">Promise</a>&lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array" title="Array">Array</a>&lt;<a href="#class-page" title="Page">Page</a>&gt;&gt;&gt; Promise which resolves to an array of all open pages.</li>
+<li>returns: &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" title="Promise">Promise</a>&lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array" title="Array">Array</a>&lt;<a href="#class-page" title="Page">Page</a>&gt;&gt;&gt; Promise which resolves to an array of all open pages. Non visible pages, such as <code>&quot;background_page&quot;</code>, will not be listed here. You can find them using <a href="#targetpage">target.page()</a>.</li>
 </ul>
+<p>An array of all pages inside the Browser. In case of multiple browser contexts,
+the method will return an array with all the pages in all browser contexts.</p>
 <h4 id="browser-process-">browser.process()</h4>
 <ul>
 <li>returns: &lt;?<a href="https://nodejs.org/api/child_process.html" title="ChildProcess">ChildProcess</a>&gt; Spawned browser process. Returns <code>null</code> if the browser instance was created with <a href="#puppeteerconnectoptions"><code>puppeteer.connect</code></a> method.</li>
 </ul>
+<h4 id="browser-target-">browser.target()</h4>
+<ul>
+<li>returns: &lt;<a href="#class-target" title="Target">Target</a>&gt;</li>
+</ul>
+<p>A target associated with the browser.</p>
 <h4 id="browser-targets-">browser.targets()</h4>
 <ul>
-<li>returns: &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array" title="Array">Array</a>&lt;<a href="#class-target" title="Target">Target</a>&gt;&gt; An array of all active targets.</li>
+<li>returns: &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array" title="Array">Array</a>&lt;<a href="#class-target" title="Target">Target</a>&gt;&gt;</li>
 </ul>
+<p>An array of all active targets inside the Browser. In case of multiple browser contexts,
+the method will return an array with all the targets in all browser contexts.</p>
 <h4 id="browser-useragent-">browser.userAgent()</h4>
 <ul>
 <li>returns: &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" title="Promise">Promise</a>&lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" title="String">string</a>&gt;&gt; Promise which resolves to the browser&#39;s original user agent.</li>
@@ -529,11 +750,120 @@ puppeteer.launch().then(<span class="hljs-keyword">async</span> browser =&gt; {
 <p>Browser websocket endpoint which can be used as an argument to
 <a href="#puppeteerconnectoptions">puppeteer.connect</a>. The format is <code>ws://${host}:${port}/devtools/browser/&lt;id&gt;</code></p>
 <p>You can find the <code>webSocketDebuggerUrl</code> from <code>http://${host}:${port}/json/version</code>. Learn more about the <a href="https://chromedevtools.github.io/devtools-protocol">devtools protocol</a> and the <a href="https://chromedevtools.github.io/devtools-protocol/#how-do-i-access-the-browser-target">browser endpoint</a>.</p>
+<h3 id="class-browsercontext">class: BrowserContext</h3>
+<ul>
+<li>extends: <a href="https://nodejs.org/api/events.html#events_class_eventemitter"><code>EventEmitter</code></a></li>
+</ul>
+<p>BrowserContexts provide a way to operate multiple independent browser sessions. When a browser is launched, it has
+a single BrowserContext used by default. The method <code>browser.newPage()</code> creates a page in the default browser context.</p>
+<p>If a page opens another page, e.g. with a <code>window.open</code> call, the popup will belong to the parent page&#39;s browser
+context.</p>
+<p>Puppeteer allows creation of &quot;incognito&quot; browser contexts with <code>browser.createIncognitoBrowserContext()</code> method.
+&quot;Incognito&quot; browser contexts don&#39;t write any browsing data to disk.</p>
+<pre><code class="lang-js"><span class="hljs-comment">// Create a new incognito browser context</span>
+<span class="hljs-keyword">const</span> context = <span class="hljs-keyword">await</span> browser.createIncognitoBrowserContext();
+<span class="hljs-comment">// Create a new page inside context.</span>
+<span class="hljs-keyword">const</span> page = <span class="hljs-keyword">await</span> context.newPage();
+<span class="hljs-comment">// ... do stuff with page ...</span>
+<span class="hljs-keyword">await</span> page.<span class="hljs-keyword">goto</span>(<span class="hljs-string">'https://example.com'</span>);
+<span class="hljs-comment">// Dispose context once it's no longer needed.</span>
+<span class="hljs-keyword">await</span> context.close();
+</code></pre>
+<h4 id="event-targetchanged-">event: &#39;targetchanged&#39;</h4>
+<ul>
+<li>&lt;<a href="#class-target" title="Target">Target</a>&gt;</li>
+</ul>
+<p>Emitted when the url of a target inside the browser context changes.</p>
+<h4 id="event-targetcreated-">event: &#39;targetcreated&#39;</h4>
+<ul>
+<li>&lt;<a href="#class-target" title="Target">Target</a>&gt;</li>
+</ul>
+<p>Emitted when a new target is created inside the browser context, for example when a new page is opened by <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/open"><code>window.open</code></a> or <a href="#browsercontextnewpage"><code>browserContext.newPage</code></a>.</p>
+<h4 id="event-targetdestroyed-">event: &#39;targetdestroyed&#39;</h4>
+<ul>
+<li>&lt;<a href="#class-target" title="Target">Target</a>&gt;</li>
+</ul>
+<p>Emitted when a target inside the browser context is destroyed, for example when a page is closed.</p>
+<h4 id="browsercontext-browser-">browserContext.browser()</h4>
+<ul>
+<li>returns: &lt;<a href="#class-browser" title="Browser">Browser</a>&gt;</li>
+</ul>
+<p>The browser this browser context belongs to.</p>
+<h4 id="browsercontext-clearpermissionoverrides-">browserContext.clearPermissionOverrides()</h4>
+<ul>
+<li>returns: &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" title="Promise">Promise</a>&gt;</li>
+</ul>
+<p>Clears all permission overrides for the browser context.</p>
+<pre><code class="lang-js">const <span class="hljs-built_in">context</span> = browser.defaultBrowserContext();
+<span class="hljs-built_in">context</span>.overridePermissions('https://<span class="hljs-built_in">example</span>.com', ['clipboard-<span class="hljs-built_in">read</span>']);
+// <span class="hljs-keyword">do</span> stuff ..
+<span class="hljs-built_in">context</span>.clearPermissionOverrides();
+</code></pre>
+<h4 id="browsercontext-close-">browserContext.close()</h4>
+<ul>
+<li>returns: &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" title="Promise">Promise</a>&gt;</li>
+</ul>
+<p>Closes the browser context. All the targets that belong to the browser context
+will be closed.</p>
+<blockquote>
+<p><strong>NOTE</strong> only incognito browser contexts can be closed.</p>
+</blockquote>
+<h4 id="browsercontext-isincognito-">browserContext.isIncognito()</h4>
+<ul>
+<li>returns: &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Boolean_type" title="Boolean">boolean</a>&gt;</li>
+</ul>
+<p>Returns whether BrowserContext is incognito.
+The default browser context is the only non-incognito browser context.</p>
+<blockquote>
+<p><strong>NOTE</strong> the default browser context cannot be closed.</p>
+</blockquote>
+<h4 id="browsercontext-newpage-">browserContext.newPage()</h4>
+<ul>
+<li>returns: &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" title="Promise">Promise</a>&lt;<a href="#class-page" title="Page">Page</a>&gt;&gt;</li>
+</ul>
+<p>Creates a new page in the browser context.</p>
+<h4 id="browsercontext-overridepermissions-origin-permissions-">browserContext.overridePermissions(origin, permissions)</h4>
+<ul>
+<li><code>origin</code> &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" title="String">string</a>&gt; The <a href="https://developer.mozilla.org/en-US/docs/Glossary/Origin" title="Origin">origin</a> to grant permissions to, e.g. &quot;<a href="https://example.com">https://example.com</a>&quot;.</li>
+<li><code>permissions</code> &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array" title="Array">Array</a>&lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" title="String">string</a>&gt;&gt; An array of permissions to grant. All permissions that are not listed here will be automatically denied. Permissions can be one of the following values:<ul>
+<li><code>&#39;geolocation&#39;</code></li>
+<li><code>&#39;midi&#39;</code></li>
+<li><code>&#39;midi-sysex&#39;</code> (system-exclusive midi)</li>
+<li><code>&#39;notifications&#39;</code></li>
+<li><code>&#39;push&#39;</code></li>
+<li><code>&#39;camera&#39;</code></li>
+<li><code>&#39;microphone&#39;</code></li>
+<li><code>&#39;background-sync&#39;</code></li>
+<li><code>&#39;ambient-light-sensor&#39;</code></li>
+<li><code>&#39;accelerometer&#39;</code></li>
+<li><code>&#39;gyroscope&#39;</code></li>
+<li><code>&#39;magnetometer&#39;</code></li>
+<li><code>&#39;accessibility-events&#39;</code></li>
+<li><code>&#39;clipboard-read&#39;</code></li>
+<li><code>&#39;clipboard-write&#39;</code></li>
+<li><code>&#39;payment-handler&#39;</code></li>
+</ul>
+</li>
+<li>returns: &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" title="Promise">Promise</a>&gt;</li>
+</ul>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> context = browser.defaultBrowserContext();
+<span class="hljs-function">await context.<span class="hljs-title">overridePermissions</span><span class="hljs-params">(<span class="hljs-string">'https://html5demos.com'</span>, [<span class="hljs-string">'geolocation'</span>])</span></span>;
+</code></pre>
+<h4 id="browsercontext-pages-">browserContext.pages()</h4>
+<ul>
+<li>returns: &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" title="Promise">Promise</a>&lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array" title="Array">Array</a>&lt;<a href="#class-page" title="Page">Page</a>&gt;&gt;&gt; Promise which resolves to an array of all open pages. Non visible pages, such as <code>&quot;background_page&quot;</code>, will not be listed here. You can find them using <a href="#targetpage">target.page()</a>.</li>
+</ul>
+<p>An array of all pages inside the browser context.</p>
+<h4 id="browsercontext-targets-">browserContext.targets()</h4>
+<ul>
+<li>returns: &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array" title="Array">Array</a>&lt;<a href="#class-target" title="Target">Target</a>&gt;&gt;</li>
+</ul>
+<p>An array of all active targets inside the browser context.</p>
 <h3 id="class-page">class: Page</h3>
 <ul>
 <li>extends: <a href="https://nodejs.org/api/events.html#events_class_eventemitter"><code>EventEmitter</code></a></li>
 </ul>
-<p>Page provides methods to interact with a single tab in Chromium. One <a href="#class-browser" title="Browser">Browser</a> instance might have multiple <a href="#class-page" title="Page">Page</a> instances.</p>
+<p>Page provides methods to interact with a single tab or <a href="https://developer.chrome.com/extensions/background_pages">extension background page</a> in Chromium. One <a href="#class-browser" title="Browser">Browser</a> instance might have multiple <a href="#class-page" title="Page">Page</a> instances.</p>
 <p>This example creates a page, navigates it to a URL, and then saves a screenshot:</p>
 <pre><code class="lang-js"><span class="hljs-keyword">const</span> puppeteer = require(<span class="hljs-string">'puppeteer'</span>);
 
@@ -640,6 +970,16 @@ In order to intercept and mutate requests, see <code>page.setRequestInterception
 <li>&lt;<a href="#class-response" title="Response">Response</a>&gt;</li>
 </ul>
 <p>Emitted when a <a href="#class-response" title="Response">response</a> is received.</p>
+<h4 id="event-workercreated-">event: &#39;workercreated&#39;</h4>
+<ul>
+<li>&lt;<a href="#class-worker" title="Worker">Worker</a>&gt;</li>
+</ul>
+<p>Emitted when a dedicated <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API">WebWorker</a> is spawned by the page.</p>
+<h4 id="event-workerdestroyed-">event: &#39;workerdestroyed&#39;</h4>
+<ul>
+<li>&lt;<a href="#class-worker" title="Worker">Worker</a>&gt;</li>
+</ul>
+<p>Emitted when a dedicated <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API">WebWorker</a> is terminated.</p>
 <h4 id="page-selector-">page.$(selector)</h4>
 <ul>
 <li><code>selector</code> &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" title="String">string</a>&gt; A <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors" title="selector">selector</a> to query page for</li>
@@ -656,12 +996,12 @@ In order to intercept and mutate requests, see <code>page.setRequestInterception
 <p>Shortcut for <a href="#frameselector-1">page.mainFrame().$$(selector)</a>.</p>
 <h4 id="page-eval-selector-pagefunction-args-">page.$$eval(selector, pageFunction[, ...args])</h4>
 <ul>
-<li><code>selector</code> &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" title="String">string</a>&gt; A <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors" title="selector">selector</a> to query frame for</li>
+<li><code>selector</code> &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" title="String">string</a>&gt; A <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors" title="selector">selector</a> to query page for</li>
 <li><code>pageFunction</code> &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function" title="Function">function</a>&gt; Function to be evaluated in browser context</li>
 <li><code>...args</code> &lt;...<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify#Description" title="Serializable">Serializable</a>|<a href="#class-jshandle" title="JSHandle">JSHandle</a>&gt; Arguments to pass to <code>pageFunction</code></li>
 <li>returns: &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" title="Promise">Promise</a>&lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify#Description" title="Serializable">Serializable</a>&gt;&gt; Promise which resolves to the return value of <code>pageFunction</code></li>
 </ul>
-<p>This method runs <code>document.querySelectorAll</code> within the page and passes it as the first argument to <code>pageFunction</code>.</p>
+<p>This method runs <code>Array.from(document.querySelectorAll(selector))</code> within the page and passes it as the first argument to <code>pageFunction</code>.</p>
 <p>If <code>pageFunction</code> returns a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" title="Promise">Promise</a>, then <code>page.$$eval</code> would wait for the promise to resolve and return its value.</p>
 <p>Examples:</p>
 <pre><code class="lang-js"><span class="hljs-keyword">const</span> divsCounts = <span class="hljs-keyword">await</span> page.$$eval(<span class="hljs-string">'div'</span>, divs =&gt; divs.length);
@@ -729,6 +1069,11 @@ In order to intercept and mutate requests, see <code>page.setRequestInterception
 <li>returns: &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" title="Promise">Promise</a>&gt;</li>
 </ul>
 <p>Brings page to front (activates tab).</p>
+<h4 id="page-browser-">page.browser()</h4>
+<ul>
+<li>returns: &lt;<a href="#class-browser" title="Browser">Browser</a>&gt;</li>
+</ul>
+<p>Get the browser the page belongs to.</p>
 <h4 id="page-click-selector-options-">page.click(selector[, options])</h4>
 <ul>
 <li><code>selector</code> &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" title="String">string</a>&gt; A <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors" title="selector">selector</a> to search for element to click. If there are multiple elements satisfying the selector, the first will be clicked.</li>
@@ -749,10 +1094,21 @@ If there&#39;s no element matching <code>selector</code>, the method throws an e
 ]);
 </code></pre>
 <p>Shortcut for <a href="#frameclickselector-options">page.mainFrame().click(selector[, options])</a>.</p>
-<h4 id="page-close-">page.close()</h4>
+<h4 id="page-close-options-">page.close(options)</h4>
 <ul>
+<li><code>options</code> &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" title="Object">Object</a>&gt;<ul>
+<li><code>runBeforeUnload</code> &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Boolean_type" title="Boolean">boolean</a>&gt; Defaults to <code>false</code>. Whether to run the
+<a href="https://developer.mozilla.org/en-US/docs/Web/Events/beforeunload">before unload</a>
+page handlers.</li>
+</ul>
+</li>
 <li>returns: &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" title="Promise">Promise</a>&gt;</li>
 </ul>
+<p>By default, <code>page.close()</code> <strong>does not</strong> run beforeunload handlers.</p>
+<blockquote>
+<p><strong>NOTE</strong> if <code>runBeforeUnload</code> is passed as true, a <code>beforeunload</code> dialog might be summoned
+and should be handled manually via page&#39;s <a href="#event-dialog">&#39;dialog&#39;</a> event.</p>
+</blockquote>
 <h4 id="page-content-">page.content()</h4>
 <ul>
 <li>returns: &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" title="Promise">Promise</a>&lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" title="String">String</a>&gt;&gt;</li>
@@ -1002,7 +1358,7 @@ can not go back, resolves to <code>null</code>.</li>
 </ul>
 </li>
 <li>returns: &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" title="Promise">Promise</a>&lt;?<a href="#class-response" title="Response">Response</a>&gt;&gt; Promise which resolves to the main resource response. In case of multiple redirects, the navigation will resolve with the response of the last redirect. If
-can not go back, resolves to <code>null</code>.</li>
+can not go forward, resolves to <code>null</code>.</li>
 </ul>
 <p>Navigate to the next page in history.</p>
 <h4 id="page-goto-url-options-">page.goto(url, options)</h4>
@@ -1017,6 +1373,7 @@ can not go back, resolves to <code>null</code>.</li>
 <li><code>networkidle2</code> - consider navigation to be finished when there are no more than 2 network connections for at least <code>500</code> ms.</li>
 </ul>
 </li>
+<li><code>referer</code> &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" title="String">string</a>&gt; Referer header value. If provided it will take preference over the referer header value set by <a href="#pagesetextrahttpheadersheaders">page.setExtraHTTPHeaders()</a>.</li>
 </ul>
 </li>
 <li>returns: &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" title="Promise">Promise</a>&lt;?<a href="#class-response" title="Response">Response</a>&gt;&gt; Promise which resolves to the main resource response. In case of multiple redirects, the navigation will resolve with the response of the last redirect.</li>
@@ -1029,9 +1386,10 @@ can not go back, resolves to <code>null</code>.</li>
 <li>the main resource failed to load.</li>
 </ul>
 <blockquote>
-<p><strong>NOTE</strong> <code>page.goto</code> either throw or return a main resource response. The only exception is navigation to <code>about:blank</code>, which would succeed and return <code>null</code>.</p>
-<p><strong>NOTE</strong> Headless mode doesn&#39;t support navigating to a PDF document. See the <a href="https://bugs.chromium.org/p/chromium/issues/detail?id=761295">upstream issue</a>.</p>
+<p><strong>NOTE</strong> <code>page.goto</code> either throw or return a main resource response. The only exceptions are navigation to <code>about:blank</code> or navigation to the same URL with a different hash, which would succeed and return <code>null</code>.</p>
+<p><strong>NOTE</strong> Headless mode doesn&#39;t support navigation to a PDF document. See the <a href="https://bugs.chromium.org/p/chromium/issues/detail?id=761295">upstream issue</a>.</p>
 </blockquote>
+<p>Shortcut for <a href="#framegotourl-options">page.mainFrame().goto(url, options)</a></p>
 <h4 id="page-hover-selector-">page.hover(selector)</h4>
 <ul>
 <li><code>selector</code> &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" title="String">string</a>&gt; A <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors" title="selector">selector</a> to search for element to hover. If there are multiple elements satisfying the selector, the first will be hovered.</li>
@@ -1040,6 +1398,11 @@ can not go back, resolves to <code>null</code>.</li>
 <p>This method fetches an element with <code>selector</code>, scrolls it into view if needed, and then uses <a href="#pagemouse">page.mouse</a> to hover over the center of the element.
 If there&#39;s no element matching <code>selector</code>, the method throws an error.</p>
 <p>Shortcut for <a href="#framehoverselector">page.mainFrame().hover(selector)</a>.</p>
+<h4 id="page-isclosed-">page.isClosed()</h4>
+<ul>
+<li>returns: boolean</li>
+</ul>
+<p>Indicates that the page has been closed.</p>
 <h4 id="page-keyboard">page.keyboard</h4>
 <ul>
 <li>returns: &lt;<a href="#class-keyboard" title="Keyboard">Keyboard</a>&gt;</li>
@@ -1079,7 +1442,7 @@ If there&#39;s no element matching <code>selector</code>, the method throws an e
 <ul>
 <li><code>options</code> &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" title="Object">Object</a>&gt; Options object which might have the following properties:<ul>
 <li><code>path</code> &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" title="String">string</a>&gt; The file path to save the PDF to. If <code>path</code> is a relative path, then it is resolved relative to <a href="https://nodejs.org/api/process.html#process_process_cwd">current working directory</a>. If no path is provided, the PDF won&#39;t be saved to the disk.</li>
-<li><code>scale</code> &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" title="Number">number</a>&gt; Scale of the webpage rendering. Defaults to <code>1</code>.</li>
+<li><code>scale</code> &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" title="Number">number</a>&gt; Scale of the webpage rendering. Defaults to <code>1</code>. Scale amount must be between 0.1 and 2.</li>
 <li><code>displayHeaderFooter</code> &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Boolean_type" title="Boolean">boolean</a>&gt; Display header and footer. Defaults to <code>false</code>.</li>
 <li><code>headerTemplate</code> &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" title="String">string</a>&gt; HTML template for the print header. Should be valid HTML markup with following classes used to inject printing values into them:<ul>
 <li><code>date</code> formatted print date</li>
@@ -1103,6 +1466,7 @@ If there&#39;s no element matching <code>selector</code>, the method throws an e
 <li><code>left</code> &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" title="String">string</a>&gt; Left margin, accepts values labeled with units.</li>
 </ul>
 </li>
+<li><code>preferCSSPageSize</code> &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Boolean_type" title="Boolean">boolean</a>&gt; Give any CSS <code>@page</code> size declared in the page priority over what is declared in <code>width</code> and <code>height</code> or <code>format</code> options. Defaults to <code>false</code>, which will scale the content to fit the paper size.</li>
 </ul>
 </li>
 <li>returns: &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" title="Promise">Promise</a>&lt;<a href="https://nodejs.org/api/buffer.html#buffer_class_buffer" title="Buffer">Buffer</a>&gt;&gt; Promise which resolves with PDF buffer.</li>
@@ -1111,6 +1475,9 @@ If there&#39;s no element matching <code>selector</code>, the method throws an e
 <p><strong>NOTE</strong> Generating a pdf is currently only supported in Chrome headless.</p>
 </blockquote>
 <p><code>page.pdf()</code> generates a pdf of the page with <code>print</code> css media. To generate a pdf with <code>screen</code> media, call <a href="#pageemulatemediamediatype">page.emulateMedia(&#39;screen&#39;)</a> before calling <code>page.pdf()</code>:</p>
+<blockquote>
+<p><strong>NOTE</strong> By default, <code>page.pdf()</code> generates a pdf with modified colors for printing. Use the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/-webkit-print-color-adjust"><code>-webkit-print-color-adjust</code></a> property to force rendering of exact colors.</p>
+</blockquote>
 <pre><code class="lang-js"><span class="hljs-comment">// Generates a PDF with 'screen' media type.</span>
 await <span class="hljs-built_in">page</span>.emulateMedia(<span class="hljs-string">'screen'</span>);
 await <span class="hljs-built_in">page</span>.pdf({<span class="hljs-built_in">path</span>: <span class="hljs-string">'page.pdf'</span>});
@@ -1198,9 +1565,10 @@ await <span class="hljs-built_in">page</span>.pdf({<span class="hljs-built_in">p
 </ul>
 </li>
 <li><code>omitBackground</code> &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Boolean_type" title="Boolean">boolean</a>&gt; Hides default white background and allows capturing screenshots with transparency. Defaults to <code>false</code>.</li>
+<li><code>encoding</code> &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" title="String">string</a>&gt; The encoding of the image, can be either <code>base64</code> or <code>binary</code>. Defaults to <code>binary</code>.</li>
 </ul>
 </li>
-<li>returns: &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" title="Promise">Promise</a>&lt;<a href="https://nodejs.org/api/buffer.html#buffer_class_buffer" title="Buffer">Buffer</a>&gt;&gt; Promise which resolves to buffer with captured screenshot</li>
+<li>returns: &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" title="Promise">Promise</a>&lt;[Buffer|String]&gt;&gt; Promise which resolves to buffer or a base64 string (depending on the value of <code>encoding</code>) with captured screenshot.</li>
 </ul>
 <blockquote>
 <p><strong>NOTE</strong> Screenshots take at least 1/6 second on OS X. See <a href="https://crbug.com/741689">https://crbug.com/741689</a> for discussion.</p>
@@ -1254,6 +1622,8 @@ that <code>page.setBypassCSP</code> should be called before navigating to the do
 </li>
 <li>returns: &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" title="Promise">Promise</a>&gt;</li>
 </ul>
+<pre><code class="lang-js"><span class="hljs-function">await page.<span class="hljs-title">setCookie</span><span class="hljs-params">(cookieObject1, cookieObject2)</span></span>;
+</code></pre>
 <h4 id="page-setdefaultnavigationtimeout-timeout-">page.setDefaultNavigationTimeout(timeout)</h4>
 <ul>
 <li><code>timeout</code> &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" title="Number">number</a>&gt; Maximum navigation time in milliseconds</li>
@@ -1275,6 +1645,22 @@ that <code>page.setBypassCSP</code> should be called before navigating to the do
 <blockquote>
 <p><strong>NOTE</strong> page.setExtraHTTPHeaders does not guarantee the order of headers in the outgoing requests.</p>
 </blockquote>
+<h4 id="page-setgeolocation-options-">page.setGeolocation(options)</h4>
+<ul>
+<li><code>options</code><ul>
+<li><code>latitude</code> &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" title="Number">number</a>&gt; Latitude between -90 and 90.</li>
+<li><code>longitude</code> &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" title="Number">number</a>&gt; Longitude between -180 and 180.</li>
+<li><code>accuracy</code> &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" title="Number">number</a>&gt; Optional non-negative accuracy value.</li>
+</ul>
+</li>
+<li>returns: &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" title="Promise">Promise</a>&gt;</li>
+</ul>
+<p>Sets the page&#39;s geolocation.</p>
+<pre><code class="lang-js"><span class="hljs-selector-tag">await</span> <span class="hljs-selector-tag">page</span><span class="hljs-selector-class">.setGeolocation</span>({<span class="hljs-attribute">latitude</span>: <span class="hljs-number">59.95</span>, longitude: <span class="hljs-number">30.31667</span>});
+</code></pre>
+<blockquote>
+<p><strong>NOTE</strong> Consider using <a href="#browsercontextoverridepermissionsorigin-permissions">browserContext.overridePermissions</a> to grant permissions for the page to read its geolocation.</p>
+</blockquote>
 <h4 id="page-setjavascriptenabled-enabled-">page.setJavaScriptEnabled(enabled)</h4>
 <ul>
 <li><code>enabled</code> &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Boolean_type" title="Boolean">boolean</a>&gt; Whether or not to enable JavaScript on the page.</li>
@@ -1294,8 +1680,9 @@ that <code>page.setBypassCSP</code> should be called before navigating to the do
 <li>returns: &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" title="Promise">Promise</a>&gt;</li>
 </ul>
 <p>Activating request interception enables <code>request.abort</code>, <code>request.continue</code> and
-<code>request.respond</code> methods.</p>
-<p>An example of a naïve request interceptor that aborts all image requests:</p>
+<code>request.respond</code> methods.  This provides the capability to modify network requests that are made by a page.</p>
+<p>Once request interception is enabled, every request will stall unless it&#39;s continued, responded or aborted.
+An example of a naïve request interceptor that aborts all image requests:</p>
 <pre><code class="lang-js"><span class="hljs-keyword">const</span> puppeteer = require(<span class="hljs-string">'puppeteer'</span>);
 
 puppeteer.launch().then(<span class="hljs-keyword">async</span> browser =&gt; {
@@ -1384,7 +1771,7 @@ page.<span class="hljs-keyword">type</span>(<span class="hljs-string">'#mytextar
 <p>This is a shortcut for <a href="#frameurl">page.mainFrame().url()</a></p>
 <h4 id="page-viewport-">page.viewport()</h4>
 <ul>
-<li>returns: &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" title="Object">Object</a>&gt;<ul>
+<li>returns: &lt;?<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" title="Object">Object</a>&gt;<ul>
 <li><code>width</code> &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" title="Number">number</a>&gt; page width in pixels.</li>
 <li><code>height</code> &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" title="Number">number</a>&gt; page height in pixels.</li>
 <li><code>deviceScaleFactor</code> &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" title="Number">number</a>&gt; Specify device scale factor (can be though of as dpr). Defaults to <code>1</code>.</li>
@@ -1409,6 +1796,17 @@ page.<span class="hljs-keyword">type</span>(<span class="hljs-string">'#mytextar
 <li>if <code>selectorOrFunctionOrTimeout</code> is a <code>number</code>, then the first argument is treated as a timeout in milliseconds and the method returns a promise which resolves after the timeout</li>
 <li>otherwise, an exception is thrown</li>
 </ul>
+<pre><code class="lang-js"><span class="hljs-comment">// wait for selector</span>
+<span class="hljs-keyword">await</span> page.waitFor(<span class="hljs-string">'.foo'</span>);
+<span class="hljs-comment">// wait for 1 second</span>
+<span class="hljs-keyword">await</span> page.waitFor(<span class="hljs-number">1000</span>);
+<span class="hljs-comment">// wait for predicate</span>
+<span class="hljs-keyword">await</span> page.waitFor(() =&gt; !!<span class="hljs-built_in">document</span>.<span class="hljs-built_in">querySelector</span>(<span class="hljs-string">'.foo'</span>));
+</code></pre>
+<p>To pass arguments from node.js to the predicate of <code>page.waitFor</code> function:</p>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> selector = <span class="hljs-string">'.foo'</span>;
+<span class="hljs-keyword">await</span> page.waitFor(selector =&gt; !!<span class="hljs-built_in">document</span>.<span class="hljs-built_in">querySelector</span>(selector), {}, selector);
+</code></pre>
 <p>Shortcut for <a href="#framewaitforselectororfunctionortimeout-options-args">page.mainFrame().waitFor(selectorOrFunctionOrTimeout[, options[, ...args]])</a>.</p>
 <h4 id="page-waitforfunction-pagefunction-options-args-">page.waitForFunction(pageFunction[, options[, ...args]])</h4>
 <ul>
@@ -1436,6 +1834,10 @@ puppeteer.launch().then(<span class="hljs-keyword">async</span> browser =&gt; {
   <span class="hljs-keyword">await</span> browser.close();
 });
 </code></pre>
+<p>To pass arguments from node.js to the predicate of <code>page.waitForFunction</code> function:</p>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> selector = <span class="hljs-string">'.foo'</span>;
+<span class="hljs-keyword">await</span> page.waitForFunction(selector =&gt; !!<span class="hljs-built_in">document</span>.<span class="hljs-built_in">querySelector</span>(selector), {}, selector);
+</code></pre>
 <p>Shortcut for <a href="#framewaitforfunctionpagefunction-options-args">page.mainFrame().waitForFunction(pageFunction[, options[, ...args]])</a>.</p>
 <h4 id="page-waitfornavigation-options-">page.waitForNavigation(options)</h4>
 <ul>
@@ -1450,8 +1852,43 @@ puppeteer.launch().then(<span class="hljs-keyword">async</span> browser =&gt; {
 </li>
 </ul>
 </li>
-<li>returns: &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" title="Promise">Promise</a>&lt;<a href="#class-response" title="Response">Response</a>&gt;&gt; Promise which resolves to the main resource response. In case of multiple redirects, the navigation will resolve with the response of the last redirect.</li>
+<li>returns: &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" title="Promise">Promise</a>&lt;[?Response]&gt;&gt; Promise which resolves to the main resource response. In case of multiple redirects, the navigation will resolve with the response of the last redirect. In case of navigation to a different anchor or navigation due to History API usage, the navigation will resolve with <code>null</code>.</li>
 </ul>
+<p>This resolves when the page navigates to a new URL or reloads. It is useful for when you run code
+which will indirectly cause the page to navigate. Consider this example:</p>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> [response] = <span class="hljs-keyword">await</span> <span class="hljs-built_in">Promise</span>.all([
+  page.waitForNavigation(), <span class="hljs-comment">// The promise resolves after navigation has finished</span>
+  page.click(<span class="hljs-string">'a.my-link'</span>), <span class="hljs-comment">// Clicking the link will indirectly cause a navigation</span>
+]);
+</code></pre>
+<p><strong>NOTE</strong> Usage of the <a href="https://developer.mozilla.org/en-US/docs/Web/API/History_API">History API</a> to change the URL is considered a navigation.</p>
+<p>Shortcut for <a href="#framewaitfornavigationoptions">page.mainFrame().waitForNavigation(options)</a>.</p>
+<h4 id="page-waitforrequest-urlorpredicate-options-">page.waitForRequest(urlOrPredicate, options)</h4>
+<ul>
+<li><code>urlOrPredicate</code> &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" title="String">string</a>|<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function" title="Function">Function</a>&gt; A URL or predicate to wait for.</li>
+<li><code>options</code> &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" title="Object">Object</a>&gt; Optional waiting parameters<ul>
+<li><code>timeout</code> &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" title="Number">number</a>&gt; Maximum wait time in milliseconds, defaults to 30 seconds, pass <code>0</code> to disable the timeout.</li>
+</ul>
+</li>
+<li>returns: &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" title="Promise">Promise</a>&lt;<a href="#class-request" title="Request">Request</a>&gt;&gt; Promise which resolves to the matched request.</li>
+</ul>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> firstRequest = <span class="hljs-keyword">await</span> page.waitForRequest(<span class="hljs-string">'http://example.com/resource'</span>);
+<span class="hljs-keyword">const</span> finalRequest = <span class="hljs-keyword">await</span> page.waitForRequest(<span class="hljs-function"><span class="hljs-params">request</span> =&gt;</span> request.url() === <span class="hljs-string">'http://example.com'</span> &amp;&amp; request.method() === <span class="hljs-string">'GET'</span>);
+<span class="hljs-keyword">return</span> firstRequest.url();
+</code></pre>
+<h4 id="page-waitforresponse-urlorpredicate-options-">page.waitForResponse(urlOrPredicate, options)</h4>
+<ul>
+<li><code>urlOrPredicate</code> &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" title="String">string</a>|<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function" title="Function">Function</a>&gt; A URL or predicate to wait for.</li>
+<li><code>options</code> &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" title="Object">Object</a>&gt; Optional waiting parameters<ul>
+<li><code>timeout</code> &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" title="Number">number</a>&gt; Maximum wait time in milliseconds, defaults to 30 seconds, pass <code>0</code> to disable the timeout.</li>
+</ul>
+</li>
+<li>returns: &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" title="Promise">Promise</a>&lt;<a href="#class-response" title="Response">Response</a>&gt;&gt; Promise which resolves to the matched response.</li>
+</ul>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> firstResponse = <span class="hljs-keyword">await</span> page.waitForResponse(<span class="hljs-string">'https://example.com/resource'</span>);
+<span class="hljs-keyword">const</span> finalResponse = <span class="hljs-keyword">await</span> page.waitForResponse(<span class="hljs-function"><span class="hljs-params">response</span> =&gt;</span> response.url() === <span class="hljs-string">'https://example.com'</span> &amp;&amp; response.status() === <span class="hljs-number">200</span>);
+<span class="hljs-keyword">return</span> finalResponse.ok();
+</code></pre>
 <h4 id="page-waitforselector-selector-options-">page.waitForSelector(selector[, options])</h4>
 <ul>
 <li><code>selector</code> &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" title="String">string</a>&gt; A <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors" title="selector">selector</a> of an element to wait for</li>
@@ -1510,6 +1947,50 @@ puppeteer.launch().then(<span class="hljs-keyword">async</span> browser =&gt; {
 });
 </code></pre>
 <p>Shortcut for <a href="#framewaitforxpathxpath-options">page.mainFrame().waitForXPath(xpath[, options])</a>.</p>
+<h4 id="page-workers-">page.workers()</h4>
+<ul>
+<li>returns: &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array" title="Array">Array</a>&lt;<a href="#class-worker" title="Worker">Worker</a>&gt;&gt;
+This method returns all of the dedicated <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API">WebWorkers</a> associated with the page.</li>
+</ul>
+<blockquote>
+<p><strong>NOTE</strong> This does not contain ServiceWorkers</p>
+</blockquote>
+<h3 id="class-worker">class: Worker</h3>
+<p>The Worker class represents a <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API">WebWorker</a>.
+The events <code>workercreated</code> and <code>workerdestroyed</code> are emitted on the page object to signal the worker lifecycle.</p>
+<pre><code class="lang-js"><span class="hljs-selector-tag">page</span><span class="hljs-selector-class">.on</span>(<span class="hljs-string">'workercreated'</span>, worker =&gt; console.log(<span class="hljs-string">'Worker created: '</span> + worker.url(<span class="hljs-string"></span>)));
+<span class="hljs-selector-tag">page</span><span class="hljs-selector-class">.on</span>(<span class="hljs-string">'workerdestroyed'</span>, worker =&gt; console.log(<span class="hljs-string">'Worker destroyed: '</span> + worker.url(<span class="hljs-string"></span>)));
+
+<span class="hljs-selector-tag">console</span><span class="hljs-selector-class">.log</span>(<span class="hljs-string">'Current workers:'</span>);
+<span class="hljs-selector-tag">for</span> (const worker of page.workers())
+  <span class="hljs-selector-tag">console</span><span class="hljs-selector-class">.log</span>(<span class="hljs-string">'  '</span> + worker.url(<span class="hljs-string"></span>));
+</code></pre>
+<h4 id="worker-evaluate-pagefunction-args-">worker.evaluate(pageFunction, ...args)</h4>
+<ul>
+<li><code>pageFunction</code> &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function" title="Function">function</a>|<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" title="String">string</a>&gt; Function to be evaluated in the worker context</li>
+<li><code>...args</code> &lt;...<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify#Description" title="Serializable">Serializable</a>|<a href="#class-jshandle" title="JSHandle">JSHandle</a>&gt; Arguments to pass to <code>pageFunction</code></li>
+<li>returns: &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" title="Promise">Promise</a>&lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify#Description" title="Serializable">Serializable</a>&gt;&gt; Promise which resolves to the return value of <code>pageFunction</code></li>
+</ul>
+<p>If the function passed to the <code>worker.evaluate</code> returns a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" title="Promise">Promise</a>, then <code>worker.evaluate</code> would wait for the promise to resolve and return its value.</p>
+<p>If the function passed to the <code>worker.evaluate</code> returns a non-<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify#Description" title="Serializable">Serializable</a> value, then <code>worker.evaluate</code> resolves to <code>undefined</code>.</p>
+<p>Shortcut for <a href="#executioncontextevaluatepagefunction-args">(await worker.executionContext()).evaluate(pageFunction, ...args)</a>.</p>
+<h4 id="worker-evaluatehandle-pagefunction-args-">worker.evaluateHandle(pageFunction, ...args)</h4>
+<ul>
+<li><code>pageFunction</code> &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function" title="Function">function</a>|<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" title="String">string</a>&gt; Function to be evaluated in the page context</li>
+<li><code>...args</code> &lt;...<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify#Description" title="Serializable">Serializable</a>|<a href="#class-jshandle" title="JSHandle">JSHandle</a>&gt; Arguments to pass to <code>pageFunction</code></li>
+<li>returns: &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" title="Promise">Promise</a>&lt;<a href="#class-jshandle" title="JSHandle">JSHandle</a>&gt;&gt; Promise which resolves to the return value of <code>pageFunction</code> as in-page object (JSHandle)</li>
+</ul>
+<p>The only difference between <code>worker.evaluate</code> and <code>worker.evaluateHandle</code> is that <code>worker.evaluateHandle</code> returns in-page object (JSHandle).</p>
+<p>If the function passed to the <code>worker.evaluateHandle</code> returns a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" title="Promise">Promise</a>, then <code>worker.evaluateHandle</code> would wait for the promise to resolve and return its value.</p>
+<p>Shortcut for <a href="#executioncontextevaluatehandlepagefunction-args">(await worker.executionContext()).evaluateHandle(pageFunction, ...args)</a>.</p>
+<h4 id="worker-executioncontext-">worker.executionContext()</h4>
+<ul>
+<li>returns: &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" title="Promise">Promise</a>&lt;<a href="#class-executioncontext" title="ExecutionContext">ExecutionContext</a>&gt;&gt;</li>
+</ul>
+<h4 id="worker-url-">worker.url()</h4>
+<ul>
+<li>returns: &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" title="String">string</a>&gt;</li>
+</ul>
 <h3 id="class-keyboard">class: Keyboard</h3>
 <p>Keyboard provides an api for managing a virtual keyboard. The high level api is <a href="#keyboardtypetext-options"><code>keyboard.type</code></a>, which takes raw characters and generates proper keydown, keypress/input, and keyup events on your page.</p>
 <p>For finer control, you can use <a href="#keyboarddownkey-options"><code>keyboard.down</code></a>, <a href="#keyboardupkey"><code>keyboard.up</code></a>, and <a href="#keyboardsendcharacterchar"><code>keyboard.sendCharacter</code></a> to manually fire events as if they were generated from a real keyboard.</p>
@@ -1561,7 +2042,7 @@ puppeteer.launch().then(<span class="hljs-keyword">async</span> browser =&gt; {
 </ul>
 <p>If <code>key</code> is a single character and no modifier keys besides <code>Shift</code> are being held down, a <code>keypress</code>/<code>input</code> event will also generated. The <code>text</code> option can be specified to force an input event to be generated.</p>
 <blockquote>
-<p><strong>NOTE</strong> Modifier keys DO effect <code>elementHandle.press</code>. Holding down <code>Shift</code> will type the text in upper case.</p>
+<p><strong>NOTE</strong> Modifier keys DO effect <code>keyboard.press</code>. Holding down <code>Shift</code> will type the text in upper case.</p>
 </blockquote>
 <p>Shortcut for <a href="#keyboarddownkey-options"><code>keyboard.down</code></a> and <a href="#keyboardupkey"><code>keyboard.up</code></a>.</p>
 <h4 id="keyboard-sendcharacter-char-">keyboard.sendCharacter(char)</h4>
@@ -1599,6 +2080,17 @@ page.keyboard.<span class="hljs-keyword">type</span>(<span class="hljs-string">'
 </ul>
 <p>Dispatches a <code>keyup</code> event.</p>
 <h3 id="class-mouse">class: Mouse</h3>
+<p>The Mouse class operates in main-frame CSS pixels relative to the top-left corner of the viewport.</p>
+<p>Every <code>page</code> object has it&#39;s own Mouse, accessible with <a href="#pagemouse"><code>page.mouse</code></a>.</p>
+<pre><code class="lang-js"><span class="hljs-comment">// Using ‘page.mouse’ to trace a 100x100 square.</span>
+await page.<span class="hljs-keyword">mouse</span>.<span class="hljs-keyword">move</span>(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>);
+await page.<span class="hljs-keyword">mouse</span>.down();
+await page.<span class="hljs-keyword">mouse</span>.<span class="hljs-keyword">move</span>(<span class="hljs-number">0</span>, <span class="hljs-number">100</span>);
+await page.<span class="hljs-keyword">mouse</span>.<span class="hljs-keyword">move</span>(<span class="hljs-number">100</span>, <span class="hljs-number">100</span>);
+await page.<span class="hljs-keyword">mouse</span>.<span class="hljs-keyword">move</span>(<span class="hljs-number">100</span>, <span class="hljs-number">0</span>);
+await page.<span class="hljs-keyword">mouse</span>.<span class="hljs-keyword">move</span>(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>);
+await page.<span class="hljs-keyword">mouse</span>.up();
+</code></pre>
 <h4 id="mouse-click-x-y-options-">mouse.click(x, y, [options])</h4>
 <ul>
 <li><code>x</code> &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" title="Number">number</a>&gt;</li>
@@ -1747,15 +2239,20 @@ puppeteer.launch().then(<span class="hljs-keyword">async</span> browser =&gt; {
   }
 });
 </code></pre>
+<p>An example of getting text from an iframe element:</p>
+<pre><code class="lang-js">  <span class="hljs-keyword">const</span> frame = page.frames().find(<span class="hljs-function"><span class="hljs-params">frame</span> =&gt;</span> frame.name() === <span class="hljs-string">'myframe'</span>);
+  <span class="hljs-keyword">const</span> text = <span class="hljs-keyword">await</span> frame.$<span class="hljs-built_in">eval</span>(<span class="hljs-string">'.selector'</span>, element =&gt; element.textContent);
+  <span class="hljs-built_in">console</span>.log(text);
+</code></pre>
 <h4 id="frame-selector-">frame.$(selector)</h4>
 <ul>
-<li><code>selector</code> &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" title="String">string</a>&gt; Selector to query page for</li>
+<li><code>selector</code> &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" title="String">string</a>&gt; A <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors" title="selector">selector</a> to query frame for</li>
 <li>returns: &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" title="Promise">Promise</a>&lt;?<a href="#class-elementhandle" title="ElementHandle">ElementHandle</a>&gt;&gt; Promise which resolves to ElementHandle pointing to the frame element.</li>
 </ul>
 <p>The method queries frame for the selector. If there&#39;s no such element within the frame, the method will resolve to <code>null</code>.</p>
 <h4 id="frame-selector-">frame.$$(selector)</h4>
 <ul>
-<li><code>selector</code> &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" title="String">string</a>&gt; Selector to query page for</li>
+<li><code>selector</code> &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" title="String">string</a>&gt; A <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors" title="selector">selector</a> to query frame for</li>
 <li>returns: &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" title="Promise">Promise</a>&lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array" title="Array">Array</a>&lt;<a href="#class-elementhandle" title="ElementHandle">ElementHandle</a>&gt;&gt;&gt; Promise which resolves to ElementHandles pointing to the frame elements.</li>
 </ul>
 <p>The method runs <code>document.querySelectorAll</code> within the frame. If no elements match the selector, the return value resolve to <code>[]</code>.</p>
@@ -1766,7 +2263,7 @@ puppeteer.launch().then(<span class="hljs-keyword">async</span> browser =&gt; {
 <li><code>...args</code> &lt;...<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify#Description" title="Serializable">Serializable</a>|<a href="#class-jshandle" title="JSHandle">JSHandle</a>&gt; Arguments to pass to <code>pageFunction</code></li>
 <li>returns: &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" title="Promise">Promise</a>&lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify#Description" title="Serializable">Serializable</a>&gt;&gt; Promise which resolves to the return value of <code>pageFunction</code></li>
 </ul>
-<p>This method runs <code>document.querySelectorAll</code> within the frame and passes it as the first argument to <code>pageFunction</code>.</p>
+<p>This method runs <code>Array.from(document.querySelectorAll(selector))</code> within the frame and passes it as the first argument to <code>pageFunction</code>.</p>
 <p>If <code>pageFunction</code> returns a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" title="Promise">Promise</a>, then <code>frame.$$eval</code> would wait for the promise to resolve and return its value.</p>
 <p>Examples:</p>
 <pre><code class="lang-js"><span class="hljs-keyword">const</span> divsCounts = <span class="hljs-keyword">await</span> frame.$$eval(<span class="hljs-string">'div'</span>, divs =&gt; divs.length);
@@ -1885,8 +2382,9 @@ aWindowHandle; <span class="hljs-comment">// Handle for the window object.</span
 </code></pre>
 <h4 id="frame-executioncontext-">frame.executionContext()</h4>
 <ul>
-<li>returns: &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" title="Promise">Promise</a>&lt;<a href="#class-executioncontext" title="ExecutionContext">ExecutionContext</a>&gt;&gt; Execution context associated with this frame.</li>
+<li>returns: &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" title="Promise">Promise</a>&lt;<a href="#class-executioncontext" title="ExecutionContext">ExecutionContext</a>&gt;&gt;</li>
 </ul>
+<p>Returns promise that resolves to the frame&#39;s default execution context.</p>
 <h4 id="frame-focus-selector-">frame.focus(selector)</h4>
 <ul>
 <li><code>selector</code> &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" title="String">string</a>&gt; A <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors" title="selector">selector</a> of an element to focus. If there are multiple elements satisfying the selector, the first will be focused.</li>
@@ -1894,6 +2392,34 @@ aWindowHandle; <span class="hljs-comment">// Handle for the window object.</span
 </ul>
 <p>This method fetches an element with <code>selector</code> and focuses it.
 If there&#39;s no element matching <code>selector</code>, the method throws an error.</p>
+<h4 id="frame-goto-url-options-">frame.goto(url, options)</h4>
+<ul>
+<li><code>url</code> &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" title="String">string</a>&gt; URL to navigate frame to. The url should include scheme, e.g. <code>https://</code>.</li>
+<li><code>options</code> &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" title="Object">Object</a>&gt; Navigation parameters which might have the following properties:<ul>
+<li><code>timeout</code> &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" title="Number">number</a>&gt; Maximum navigation time in milliseconds, defaults to 30 seconds, pass <code>0</code> to disable timeout. The default value can be changed by using the <a href="#pagesetdefaultnavigationtimeouttimeout">page.setDefaultNavigationTimeout(timeout)</a> method.</li>
+<li><code>waitUntil</code> &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" title="String">string</a>|<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array" title="Array">Array</a>&lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" title="String">string</a>&gt;&gt; When to consider navigation succeeded, defaults to <code>load</code>. Given an array of event strings, navigation is considered to be successful after all events have been fired. Events can be either:<ul>
+<li><code>load</code> - consider navigation to be finished when the <code>load</code> event is fired.</li>
+<li><code>domcontentloaded</code> - consider navigation to be finished when the <code>DOMContentLoaded</code> event is fired.</li>
+<li><code>networkidle0</code> - consider navigation to be finished when there are no more than 0 network connections for at least <code>500</code> ms.</li>
+<li><code>networkidle2</code> - consider navigation to be finished when there are no more than 2 network connections for at least <code>500</code> ms.</li>
+</ul>
+</li>
+<li><code>referer</code> &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" title="String">string</a>&gt; Referer header value. If provided it will take preference over the referer header value set by <a href="#pagesetextrahttpheadersheaders">page.setExtraHTTPHeaders()</a>.</li>
+</ul>
+</li>
+<li>returns: &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" title="Promise">Promise</a>&lt;?<a href="#class-response" title="Response">Response</a>&gt;&gt; Promise which resolves to the main resource response. In case of multiple redirects, the navigation will resolve with the response of the last redirect.</li>
+</ul>
+<p>The <code>frame.goto</code> will throw an error if:</p>
+<ul>
+<li>there&#39;s an SSL error (e.g. in case of self-signed certificates).</li>
+<li>target URL is invalid.</li>
+<li>the <code>timeout</code> is exceeded during navigation.</li>
+<li>the main resource failed to load.</li>
+</ul>
+<blockquote>
+<p><strong>NOTE</strong> <code>frame.goto</code> either throw or return a main resource response. The only exceptions are navigation to <code>about:blank</code> or navigation to the same URL with a different hash, which would succeed and return <code>null</code>.</p>
+<p><strong>NOTE</strong> Headless mode doesn&#39;t support navigation to a PDF document. See the <a href="https://bugs.chromium.org/p/chromium/issues/detail?id=761295">upstream issue</a>.</p>
+</blockquote>
 <h4 id="frame-hover-selector-">frame.hover(selector)</h4>
 <ul>
 <li><code>selector</code> &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" title="String">string</a>&gt; A <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors" title="selector">selector</a> to search for element to hover. If there are multiple elements satisfying the selector, the first will be hovered.</li>
@@ -1981,6 +2507,17 @@ frame.<span class="hljs-keyword">type</span>(<span class="hljs-string">'#mytexta
 <li>if <code>selectorOrFunctionOrTimeout</code> is a <code>number</code>, then the first argument is treated as a timeout in milliseconds and the method returns a promise which resolves after the timeout</li>
 <li>otherwise, an exception is thrown</li>
 </ul>
+<pre><code class="lang-js"><span class="hljs-comment">// wait for selector</span>
+<span class="hljs-keyword">await</span> page.waitFor(<span class="hljs-string">'.foo'</span>);
+<span class="hljs-comment">// wait for 1 second</span>
+<span class="hljs-keyword">await</span> page.waitFor(<span class="hljs-number">1000</span>);
+<span class="hljs-comment">// wait for predicate</span>
+<span class="hljs-keyword">await</span> page.waitFor(() =&gt; !!<span class="hljs-built_in">document</span>.<span class="hljs-built_in">querySelector</span>(<span class="hljs-string">'.foo'</span>));
+</code></pre>
+<p>To pass arguments from node.js to the predicate of <code>page.waitFor</code> function:</p>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> selector = <span class="hljs-string">'.foo'</span>;
+<span class="hljs-keyword">await</span> page.waitFor(selector =&gt; !!<span class="hljs-built_in">document</span>.<span class="hljs-built_in">querySelector</span>(selector), {}, selector);
+</code></pre>
 <h4 id="frame-waitforfunction-pagefunction-options-args-">frame.waitForFunction(pageFunction[, options[, ...args]])</h4>
 <ul>
 <li><code>pageFunction</code> &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function" title="Function">function</a>|<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" title="String">string</a>&gt; Function to be evaluated in browser context</li>
@@ -2007,6 +2544,33 @@ puppeteer.launch().then(<span class="hljs-keyword">async</span> browser =&gt; {
   <span class="hljs-keyword">await</span> browser.close();
 });
 </code></pre>
+<p>To pass arguments from node.js to the predicate of <code>page.waitForFunction</code> function:</p>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> selector = <span class="hljs-string">'.foo'</span>;
+<span class="hljs-keyword">await</span> page.waitForFunction(selector =&gt; !!<span class="hljs-built_in">document</span>.<span class="hljs-built_in">querySelector</span>(selector), {}, selector);
+</code></pre>
+<h4 id="frame-waitfornavigation-options-">frame.waitForNavigation(options)</h4>
+<ul>
+<li><code>options</code> &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" title="Object">Object</a>&gt; Navigation parameters which might have the following properties:<ul>
+<li><code>timeout</code> &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" title="Number">number</a>&gt; Maximum navigation time in milliseconds, defaults to 30 seconds, pass <code>0</code> to disable timeout. The default value can be changed by using the <a href="#pagesetdefaultnavigationtimeouttimeout">page.setDefaultNavigationTimeout(timeout)</a> method.</li>
+<li><code>waitUntil</code> &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" title="String">string</a>|<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array" title="Array">Array</a>&lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" title="String">string</a>&gt;&gt; When to consider navigation succeeded, defaults to <code>load</code>. Given an array of event strings, navigation is considered to be successful after all events have been fired. Events can be either:<ul>
+<li><code>load</code> - consider navigation to be finished when the <code>load</code> event is fired.</li>
+<li><code>domcontentloaded</code> - consider navigation to be finished when the <code>DOMContentLoaded</code> event is fired.</li>
+<li><code>networkidle0</code> - consider navigation to be finished when there are no more than 0 network connections for at least <code>500</code> ms.</li>
+<li><code>networkidle2</code> - consider navigation to be finished when there are no more than 2 network connections for at least <code>500</code> ms.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>returns: &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" title="Promise">Promise</a>&lt;[?Response]&gt;&gt; Promise which resolves to the main resource response. In case of multiple redirects, the navigation will resolve with the response of the last redirect. In case of navigation to a different anchor or navigation due to History API usage, the navigation will resolve with <code>null</code>.</li>
+</ul>
+<p>This resolves when the frame navigates to a new URL. It is useful for when you run code
+which will indirectly cause the frame to navigate. Consider this example:</p>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> [response] = <span class="hljs-keyword">await</span> <span class="hljs-built_in">Promise</span>.all([
+  frame.waitForNavigation(), <span class="hljs-comment">// The navigation promise resolves after navigation has finished</span>
+  frame.click(<span class="hljs-string">'a.my-link'</span>), <span class="hljs-comment">// Clicking the link will indirectly cause a navigation</span>
+]);
+</code></pre>
+<p><strong>NOTE</strong> Usage of the <a href="https://developer.mozilla.org/en-US/docs/Web/API/History_API">History API</a> to change the URL is considered a navigation.</p>
 <h4 id="frame-waitforselector-selector-options-">frame.waitForSelector(selector[, options])</h4>
 <ul>
 <li><code>selector</code> &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" title="String">string</a>&gt; A <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors" title="selector">selector</a> of an element to wait for</li>
@@ -2064,11 +2628,13 @@ puppeteer.launch().then(<span class="hljs-keyword">async</span> browser =&gt; {
 });
 </code></pre>
 <h3 id="class-executioncontext">class: ExecutionContext</h3>
-<p>The class represents a context for JavaScript execution. Examples of JavaScript contexts are:</p>
+<p>The class represents a context for JavaScript execution. A <a href="#class-page" title="Page">Page</a> might have many execution contexts:</p>
 <ul>
-<li>each <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe">frame</a> has a separate execution context</li>
-<li>all kind of <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API">workers</a> have their own contexts</li>
+<li>each <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe">frame</a> has &quot;default&quot; execution context that is
+always created after frame is attached to DOM. This context is returned by the <a href="#frameexecutioncontext"><code>frame.executionContext()</code></a> method.</li>
+<li><a href="https://developer.chrome.com/extensions">Extensions</a>&#39;s content scripts create additional execution contexts.</li>
 </ul>
+<p>Besides pages, execution contexts can be found in <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API">workers</a>.</p>
 <h4 id="executioncontext-evaluate-pagefunction-args-">executionContext.evaluate(pageFunction, ...args)</h4>
 <ul>
 <li><code>pageFunction</code> &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function" title="Function">function</a>|<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" title="String">string</a>&gt; Function to be evaluated in <code>executionContext</code></li>
@@ -2215,15 +2781,47 @@ puppeteer.launch().then(<span class="hljs-keyword">async</span> browser =&gt; {
 <li>returns: &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" title="Promise">Promise</a>&lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array" title="Array">Array</a>&lt;<a href="#class-elementhandle" title="ElementHandle">ElementHandle</a>&gt;&gt;&gt;</li>
 </ul>
 <p>The method runs <code>element.querySelectorAll</code> within the page. If no elements match the selector, the return value resolve to <code>[]</code>.</p>
+<h4 id="elementhandle-eval-selector-pagefunction-args-">elementHandle.$$eval(selector, pageFunction, ...args)</h4>
+<ul>
+<li><code>selector</code> &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" title="String">string</a>&gt; A <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors" title="selector">selector</a> to query page for</li>
+<li><code>pageFunction</code> &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function" title="Function">function</a>&gt; Function to be evaluated in browser context</li>
+<li><code>...args</code> &lt;...<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify#Description" title="Serializable">Serializable</a>|<a href="#class-jshandle" title="JSHandle">JSHandle</a>&gt; Arguments to pass to <code>pageFunction</code></li>
+<li>returns: &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" title="Promise">Promise</a>&lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify#Description" title="Serializable">Serializable</a>&gt;&gt; Promise which resolves to the return value of <code>pageFunction</code></li>
+</ul>
+<p>This method runs <code>document.querySelectorAll</code> within the element and passes it as the first argument to <code>pageFunction</code>. If there&#39;s no element matching <code>selector</code>, the method throws an error.</p>
+<p>If <code>pageFunction</code> returns a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" title="Promise">Promise</a>, then <code>frame.$$eval</code> would wait for the promise to resolve and return its value.</p>
+<p>Examples:</p>
+<pre><code class="lang-html">&lt;<span class="hljs-keyword">div</span> <span class="hljs-built_in">class</span>=<span class="hljs-string">"feed"</span>&gt;
+  &lt;<span class="hljs-keyword">div</span> <span class="hljs-built_in">class</span>=<span class="hljs-string">"tweet"</span>&gt;Hello!&lt;/<span class="hljs-keyword">div</span>&gt;
+  &lt;<span class="hljs-keyword">div</span> <span class="hljs-built_in">class</span>=<span class="hljs-string">"tweet"</span>&gt;Hi!&lt;/<span class="hljs-keyword">div</span>&gt;
+&lt;/<span class="hljs-keyword">div</span>&gt;
+</code></pre>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> feedHandle = <span class="hljs-keyword">await</span> page.$(<span class="hljs-string">'.feed'</span>);
+expect(<span class="hljs-keyword">await</span> feedHandle.$$<span class="hljs-built_in">eval</span>(<span class="hljs-string">'.tweet'</span>, nodes =&gt; nodes.map(<span class="hljs-function"><span class="hljs-params">n</span> =&gt;</span> n.innerText)).toEqual([<span class="hljs-string">'Hello!'</span>, <span class="hljs-string">'Hi!'</span>]);
+</code></pre>
+<h4 id="elementhandle-eval-selector-pagefunction-args-">elementHandle.$eval(selector, pageFunction, ...args)</h4>
+<ul>
+<li><code>selector</code> &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" title="String">string</a>&gt; A <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors" title="selector">selector</a> to query page for</li>
+<li><code>pageFunction</code> &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function" title="Function">function</a>&gt; Function to be evaluated in browser context</li>
+<li><code>...args</code> &lt;...<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify#Description" title="Serializable">Serializable</a>|<a href="#class-jshandle" title="JSHandle">JSHandle</a>&gt; Arguments to pass to <code>pageFunction</code></li>
+<li>returns: &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" title="Promise">Promise</a>&lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify#Description" title="Serializable">Serializable</a>&gt;&gt; Promise which resolves to the return value of <code>pageFunction</code></li>
+</ul>
+<p>This method runs <code>document.querySelector</code> within the element and passes it as the first argument to <code>pageFunction</code>. If there&#39;s no element matching <code>selector</code>, the method throws an error.</p>
+<p>If <code>pageFunction</code> returns a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" title="Promise">Promise</a>, then <code>frame.$eval</code> would wait for the promise to resolve and return its value.</p>
+<p>Examples:</p>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> tweetHandle = <span class="hljs-keyword">await</span> page.$(<span class="hljs-string">'.tweet'</span>);
+expect(<span class="hljs-keyword">await</span> tweetHandle.$<span class="hljs-built_in">eval</span>(<span class="hljs-string">'.like'</span>, node =&gt; node.innerText)).toBe(<span class="hljs-string">'100'</span>);
+expect(<span class="hljs-keyword">await</span> tweetHandle.$<span class="hljs-built_in">eval</span>(<span class="hljs-string">'.retweets'</span>, node =&gt; node.innerText)).toBe(<span class="hljs-string">'10'</span>);
+</code></pre>
 <h4 id="elementhandle-x-expression-">elementHandle.$x(expression)</h4>
 <ul>
 <li><code>expression</code> &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" title="String">string</a>&gt; Expression to <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/evaluate">evaluate</a>.</li>
-<li>returns: &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" title="Promise">Promise</a>&lt;?<a href="#class-elementhandle" title="ElementHandle">ElementHandle</a>&gt;&gt; Promise which resolves to ElementHandle pointing to the frame element.</li>
+<li>returns: &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" title="Promise">Promise</a>&lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array" title="Array">Array</a>&lt;<a href="#class-elementhandle" title="ElementHandle">ElementHandle</a>&gt;&gt;&gt;</li>
 </ul>
-<p>The method evaluates the XPath expression relative to the elementHandle. If there&#39;s no such element, the method will resolve to <code>null</code>.</p>
+<p>The method evaluates the XPath expression relative to the elementHandle. If there are no such elements, the method will resolve to an empty array.</p>
 <h4 id="elementhandle-aselement-">elementHandle.asElement()</h4>
 <ul>
-<li>returns: &lt;<a href="#class-elementhandle" title="ElementHandle">elementhandle</a>&gt;</li>
+<li>returns: &lt;<a href="#class-elementhandle" title="ElementHandle">ElementHandle</a>&gt;</li>
 </ul>
 <h4 id="elementhandle-boundingbox-">elementHandle.boundingBox()</h4>
 <ul>
@@ -2306,6 +2904,10 @@ children; <span class="hljs-comment">// holds elementHandles to all children of 
 </ul>
 <p>This method scrolls element into view if needed, and then uses <a href="#pagemouse">page.mouse</a> to hover over the center of the element.
 If the element is detached from DOM, the method throws an error.</p>
+<h4 id="elementhandle-isintersectingviewport-">elementHandle.isIntersectingViewport()</h4>
+<ul>
+<li>returns: &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" title="Promise">Promise</a>&lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Boolean_type" title="Boolean">boolean</a>&gt;&gt; Resolves to true if the element is visible in the current viewport.</li>
+</ul>
 <h4 id="elementhandle-jsonvalue-">elementHandle.jsonValue()</h4>
 <ul>
 <li>returns: &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" title="Promise">Promise</a>&lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" title="Object">Object</a>&gt;&gt;</li>
@@ -2372,7 +2974,7 @@ elementHandle.<span class="hljs-keyword">type</span>(<span class="hljs-string">'
 </ul>
 <p>This method expects <code>elementHandle</code> to point to an <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input">input element</a>.</p>
 <h3 id="class-request">class: Request</h3>
-<p>Whenever the page sends a request, the following events are emitted by puppeteer&#39;s page:</p>
+<p>Whenever the page sends a request, such as for a network resource, the following events are emitted by puppeteer&#39;s page:</p>
 <ul>
 <li><a href="#event-request">&#39;request&#39;</a> emitted when the request is issued by the page.</li>
 <li><a href="#event-response">&#39;response&#39;</a> emitted when/if the response is received for the request.</li>
@@ -2388,6 +2990,8 @@ one of the following:<ul>
 <li><code>accessdenied</code> - Permission to access a resource, other than the network, was denied</li>
 <li><code>addressunreachable</code> - The IP address is unreachable. This usually means
 that there is no route to the specified host or network.</li>
+<li><code>blockedbyclient</code> - The client chose to block the request.</li>
+<li><code>blockedbyresponse</code> - The request failed because the response was delivered along with requirements which are not met (&#39;X-Frame-Options&#39; and &#39;Content-Security-Policy&#39; ancestor checks, for instance).</li>
 <li><code>connectionaborted</code> - A connection timed out as a result of not receiving an ACK for data sent.</li>
 <li><code>connectionclosed</code> - A connection was closed (corresponding to a TCP FIN).</li>
 <li><code>connectionfailed</code> - A connection attempt failed.</li>
@@ -2432,12 +3036,17 @@ Exception is immediately thrown if the request interception is not enabled.</p>
 </code></pre>
 <h4 id="request-frame-">request.frame()</h4>
 <ul>
-<li>returns: &lt;?<a href="#class-frame" title="Frame">Frame</a>&gt; A matching <a href="#class-frame" title="Frame">Frame</a> object, or <code>null</code> if navigating to error pages.</li>
+<li>returns: &lt;?<a href="#class-frame" title="Frame">Frame</a>&gt; A <a href="#class-frame" title="Frame">Frame</a> that initiated this request, or <code>null</code> if navigating to error pages.</li>
 </ul>
 <h4 id="request-headers-">request.headers()</h4>
 <ul>
 <li>returns: &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" title="Object">Object</a>&gt; An object with HTTP headers associated with the request. All header names are lower-case.</li>
 </ul>
+<h4 id="request-isnavigationrequest-">request.isNavigationRequest()</h4>
+<ul>
+<li>returns: &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Boolean_type" title="Boolean">boolean</a>&gt;</li>
+</ul>
+<p>Whether this request is driving frame&#39;s navigation.</p>
 <h4 id="request-method-">request.method()</h4>
 <ul>
 <li>returns: &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" title="String">string</a>&gt; Request&#39;s method (GET, POST, etc.)</li>
@@ -2517,6 +3126,10 @@ Calling <code>request.respond</code> for a dataURL request is a noop.</p>
 <ul>
 <li>returns: <Promise<[Buffer]>&gt; Promise which resolves to a buffer with response body.</li>
 </ul>
+<h4 id="response-frame-">response.frame()</h4>
+<ul>
+<li>returns: &lt;?<a href="#class-frame" title="Frame">Frame</a>&gt; A <a href="#class-frame" title="Frame">Frame</a> that initiated this response, or <code>null</code> if navigating to error pages.</li>
+</ul>
 <h4 id="response-fromcache-">response.fromCache()</h4>
 <ul>
 <li>returns: &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Boolean_type" title="Boolean">boolean</a>&gt;</li>
@@ -2541,6 +3154,14 @@ Calling <code>request.respond</code> for a dataURL request is a noop.</p>
 <li>returns: &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Boolean_type" title="Boolean">boolean</a>&gt;</li>
 </ul>
 <p>Contains a boolean stating whether the response was successful (status in the range 200-299) or not.</p>
+<h4 id="response-remoteaddress-">response.remoteAddress()</h4>
+<ul>
+<li>returns: &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" title="Object">Object</a>&gt;<ul>
+<li><code>ip</code> &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" title="String">string</a>&gt; the IP address of the remote server</li>
+<li><code>port</code> &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" title="Number">number</a>&gt; the port used to connect to the remote server</li>
+</ul>
+</li>
+</ul>
 <h4 id="response-request-">response.request()</h4>
 <ul>
 <li>returns: &lt;<a href="#class-request" title="Request">Request</a>&gt; A matching <a href="#class-request" title="Request">Request</a> object.</li>
@@ -2554,6 +3175,11 @@ Calling <code>request.respond</code> for a dataURL request is a noop.</p>
 <li>returns: &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" title="Number">number</a>&gt;</li>
 </ul>
 <p>Contains the status code of the response (e.g., 200 for a success).</p>
+<h4 id="response-statustext-">response.statusText()</h4>
+<ul>
+<li>returns: &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" title="String">string</a>&gt;</li>
+</ul>
+<p>Contains the status text of the response (e.g. usually an &quot;OK&quot; for a success).</p>
 <h4 id="response-text-">response.text()</h4>
 <ul>
 <li>returns: &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" title="Promise">Promise</a>&lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" title="String">string</a>&gt;&gt; Promise which resolves to a text representation of response body.</li>
@@ -2564,7 +3190,7 @@ Calling <code>request.respond</code> for a dataURL request is a noop.</p>
 </ul>
 <p>Contains the URL of the response.</p>
 <h3 id="class-securitydetails">class: SecurityDetails</h3>
-<p><a href="#class-securitydetails" title="SecurityDetails">SecurityDetails</a> class represents responses which are received by page.</p>
+<p><a href="#class-securitydetails" title="SecurityDetails">SecurityDetails</a> class represents the security details when response was received over the secure connection.</p>
 <h4 id="securitydetails-issuer-">securityDetails.issuer()</h4>
 <ul>
 <li>returns: &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" title="String">string</a>&gt; A string with the name of issuer of the certificate.</li>
@@ -2586,21 +3212,36 @@ Calling <code>request.respond</code> for a dataURL request is a noop.</p>
 <li>returns: &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" title="Number">number</a>&gt; <a href="https://en.wikipedia.org/wiki/Unix_time" title="Unix Time">UnixTime</a> stating the end of validity of the certificate.</li>
 </ul>
 <h3 id="class-target">class: Target</h3>
+<h4 id="target-browser-">target.browser()</h4>
+<ul>
+<li>returns: &lt;<a href="#class-browser" title="Browser">Browser</a>&gt;</li>
+</ul>
+<p>Get the browser the target belongs to.</p>
+<h4 id="target-browsercontext-">target.browserContext()</h4>
+<ul>
+<li>returns: &lt;<a href="#class-browsercontext" title="BrowserContext">BrowserContext</a>&gt;</li>
+</ul>
+<p>The browser context the target belongs to.</p>
 <h4 id="target-createcdpsession-">target.createCDPSession()</h4>
 <ul>
 <li>returns: &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" title="Promise">Promise</a>&lt;<a href="#class-cdpsession" title="CDPSession">CDPSession</a>&gt;&gt;</li>
 </ul>
 <p>Creates a Chrome Devtools Protocol session attached to the target.</p>
+<h4 id="target-opener-">target.opener()</h4>
+<ul>
+<li>returns: &lt;?<a href="#class-target" title="Target">Target</a>&gt;</li>
+</ul>
+<p>Get the target that opened this target. Top-level targets return <code>null</code>.</p>
 <h4 id="target-page-">target.page()</h4>
 <ul>
 <li>returns: &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" title="Promise">Promise</a>&lt;?<a href="#class-page" title="Page">Page</a>&gt;&gt;</li>
 </ul>
-<p>If the target is not of type <code>&quot;page&quot;</code>, returns <code>null</code>.</p>
+<p>If the target is not of type <code>&quot;page&quot;</code> or <code>&quot;background_page&quot;</code>, returns <code>null</code>.</p>
 <h4 id="target-type-">target.type()</h4>
 <ul>
 <li>returns: &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" title="String">string</a>&gt;</li>
 </ul>
-<p>Identifies what kind of target this is. Can be <code>&quot;page&quot;</code>, <code>&quot;service_worker&quot;</code>, <code>&quot;browser&quot;</code> or <code>&quot;other&quot;</code>.</p>
+<p>Identifies what kind of target this is. Can be <code>&quot;page&quot;</code>, <a href="https://developer.chrome.com/extensions/background_pages"><code>&quot;background_page&quot;</code></a>, <code>&quot;service_worker&quot;</code>, <code>&quot;browser&quot;</code> or <code>&quot;other&quot;</code>.</p>
 <h4 id="target-url-">target.url()</h4>
 <ul>
 <li>returns: &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" title="String">string</a>&gt;</li>
@@ -2617,7 +3258,7 @@ Calling <code>request.respond</code> for a dataURL request is a noop.</p>
 <p>Documentation on DevTools Protocol can be found here: <a href="https://chromedevtools.github.io/devtools-protocol/">DevTools Protocol Viewer</a>.</p>
 <pre><code class="lang-js"><span class="hljs-keyword">const</span> client = <span class="hljs-keyword">await</span> page.target().createCDPSession();
 <span class="hljs-keyword">await</span> client.send(<span class="hljs-string">'Animation.enable'</span>);
-<span class="hljs-keyword">await</span> client.on(<span class="hljs-string">'Animation.animationCreated'</span>, () =&gt; <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Animation created!'</span>));
+client.on(<span class="hljs-string">'Animation.animationCreated'</span>, () =&gt; <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Animation created!'</span>));
 <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> client.send(<span class="hljs-string">'Animation.getPlaybackRate'</span>);
 <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'playback rate is '</span> + response.playbackRate);
 <span class="hljs-keyword">await</span> client.send(<span class="hljs-string">'Animation.setPlaybackRate'</span>, {
@@ -2676,10 +3317,14 @@ executed code:</p>
 <ul>
 <li><code>options</code> &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" title="Object">Object</a>&gt;  Set of configurable options for coverage<ul>
 <li><code>resetOnNavigation</code> &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Boolean_type" title="Boolean">boolean</a>&gt; Whether to reset coverage on every navigation. Defaults to <code>true</code>.</li>
+<li><code>reportAnonymousScripts</code> &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Boolean_type" title="Boolean">boolean</a>&gt; Whether anonymous scripts generated by the page should be reported. Defaults to <code>false</code>.</li>
 </ul>
 </li>
 <li>returns: &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" title="Promise">Promise</a>&gt; Promise that resolves when coverage is started</li>
 </ul>
+<blockquote>
+<p><strong>NOTE</strong> Anonymous scripts are ones that don&#39;t have an associated url. These are scripts that are dynamically created on the page using <code>eval</code> or <code>new Function</code>. If <code>reportAnonymousScripts</code> is set to <code>true</code>, anonymous scripts will have <code>__puppeteer_evaluation_script__</code> as their URL.</p>
+</blockquote>
 <h4 id="coverage-stopcsscoverage-">coverage.stopCSSCoverage()</h4>
 <ul>
 <li>returns: &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" title="Promise">Promise</a>&lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array" title="Array">Array</a>&lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" title="Object">Object</a>&gt;&gt;&gt; Promise that resolves to the array of coverage reports for all stylesheets<ul>
@@ -2698,7 +3343,7 @@ executed code:</p>
 </blockquote>
 <h4 id="coverage-stopjscoverage-">coverage.stopJSCoverage()</h4>
 <ul>
-<li>returns: &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" title="Promise">Promise</a>&lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array" title="Array">Array</a>&lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" title="Object">Object</a>&gt;&gt;&gt; Promise that resolves to the array of coverage reports for all non-anonymous scripts<ul>
+<li>returns: &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" title="Promise">Promise</a>&lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array" title="Array">Array</a>&lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" title="Object">Object</a>&gt;&gt;&gt; Promise that resolves to the array of coverage reports for all scripts<ul>
 <li><code>url</code> &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" title="String">string</a>&gt; Script URL</li>
 <li><code>text</code> &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" title="String">string</a>&gt; Script content</li>
 <li><code>ranges</code> &lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array" title="Array">Array</a>&lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" title="Object">Object</a>&gt;&gt; Script ranges that were executed. Ranges are sorted and non-overlapping.<ul>
@@ -2710,6 +3355,11 @@ executed code:</p>
 </li>
 </ul>
 <blockquote>
-<p><strong>NOTE</strong> JavaScript Coverage doesn&#39;t include anonymous scripts. However, scripts with sourceURLs are
+<p><strong>NOTE</strong> JavaScript Coverage doesn&#39;t include anonymous scripts by default. However, scripts with sourceURLs are
 reported.</p>
 </blockquote>
+<h3 id="class-timeouterror">class: TimeoutError</h3>
+<ul>
+<li>extends: <a href="https://nodejs.org/api/errors.html#errors_class_error" title="Error">Error</a></li>
+</ul>
+<p>TimeoutError is emitted whenever certain operations are terminated due to timeout, e.g. <a href="#pagewaitforselectorselector-options">page.waitForSelector(selector[, options])</a> or <a href="#puppeteerlaunchoptions">puppeteer.launch([options])</a>.</p>

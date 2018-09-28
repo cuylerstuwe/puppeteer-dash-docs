@@ -5,7 +5,7 @@
 	<key>CFBundleIdentifier</key>
 	<string>puppeteer</string>
 	<key>CFBundleName</key>
-	<string>Puppeteer v1.3.0</string>
+	<string>Puppeteer v1.8.0</string>
 	<key>DocSetPlatformFamily</key>
 	<string>puppeteer</string>
 	<key>isDashDocset</key>
@@ -13,7 +13,7 @@
 	<key>DashDocSetFamily</key>
 	<string>dashtoc</string>
 	<key>dashIndexFilePath</key>
-	<string>dox.html</string>
+	<string>puppeteer.html</string>
 	<key>isJavaScriptEnabled</key><false/>
 </dict>
 </plist>

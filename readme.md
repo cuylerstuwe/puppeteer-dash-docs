@@ -15,7 +15,8 @@ Built by [Cuyler Stuwe *(salembeats)*](https://github.com/salembeats).
 
 ### Velocity
 
-- Open the menu *(upper-left at the time of this writing)*.
+- Pack the `dash-or-zeal` folder into a `.docset.tgz` file.
+- Open Velocity's menu *(upper-left at the time of this writing)*.
 - Select *"Add/Download"*.
 - Select *"XCode"* under *"Docset Sources"*.
 - Click *"Import..."* and direct the file picker dialog to the ```puppeteer.docset.tgz``` file inside of this repository's ```/release/velocity/``` subdirectory.
